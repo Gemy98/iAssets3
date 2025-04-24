@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperTemplate PUBLIC "-//JasperReports//DTD Template//EN" "http://jasperreports.sourceforge.net/dtds/jaspertemplate.dtd">
+
+<jasperTemplate>
+	<style name="default_style" isDefault="true" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" fontSize="13" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false">
+		<box topPadding="0" leftPadding="5" bottomPadding="0" rightPadding="5"/>
+	</style>
+	<style name="table" hAlign="Right" vAlign="Middle" fontName="Times New Roman" fontSize="13" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#ACB1BF" hAlign="Center" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" fontSize="15" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E6ECFF" hAlign="Center" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" fontSize="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" fontSize="12" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false">
+		<box topPadding="5" leftPadding="5" bottomPadding="5" rightPadding="5">
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<paragraph lineSpacing="1_1_2"/>
+	</style>
+	<style name="centered_cell" hAlign="Center" vAlign="Middle" markup="styled" isBlankWhenNull="true" fontName="Times New Roman" fontSize="13" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+	<style name="right_aligned_cell" hAlign="Right" vAlign="Middle" markup="styled" isBlankWhenNull="true" fontName="Times New Roman" fontSize="13" isBold="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+	<style name="report_title" hAlign="Center" vAlign="Top" rotation="None" isBlankWhenNull="true" fontName="Times New Roman" fontSize="20" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+	<style name="page_number" hAlign="Center" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" fontSize="10" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+	<style name="side_label" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" fontSize="13" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+	<style name="table_CH_small" mode="Opaque" backcolor="#E6ECFF" hAlign="Center" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" fontSize="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH_normal" mode="Opaque" backcolor="#E6ECFF" hAlign="Center" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" fontSize="13" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="header_text" mode="Opaque" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" fontSize="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+</jasperTemplate>

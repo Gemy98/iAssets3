@@ -1,0 +1,949 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PPMForm" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" uuid="51c8e24f-a102-4e87-85e5-de66d75e25ef">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="271"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="0.25" lineColor="#000000"/>
+			<topPen lineWidth="0.25"/>
+			<leftPen lineWidth="0.25"/>
+			<bottomPen lineWidth="0.25"/>
+			<rightPen lineWidth="0.25"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+			<topPen lineWidth="1.0"/>
+			<leftPen lineWidth="1.0"/>
+			<bottomPen lineWidth="1.0"/>
+			<rightPen lineWidth="1.0"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="side_label_en" forecolor="#000000" hAlign="Left" vAlign="Middle" pattern="" isBlankWhenNull="true" fontName="Times New Roman" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<box leftPadding="3"/>
+	</style>
+	<style name="side_label_ar" forecolor="#000000" fill="Solid" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" fontSize="13" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<pen lineWidth="0.25"/>
+		<box rightPadding="3">
+			<rightPen lineWidth="0.25" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="fields_frame" fill="Solid">
+		<box>
+			<pen lineWidth="0.25"/>
+			<topPen lineWidth="0.25"/>
+			<leftPen lineWidth="0.25"/>
+			<bottomPen lineWidth="0.25"/>
+			<rightPen lineWidth="0.25"/>
+		</box>
+	</style>
+	<style name="date" hAlign="Center" vAlign="Middle" fontSize="10" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="dotted_line">
+		<pen lineWidth="0.25" lineStyle="Dotted" lineColor="#000000"/>
+	</style>
+	<style name="center_label_en" hAlign="Center" vAlign="Middle" fontName="Times New Roman" fontSize="10" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" isPdfEmbedded="true"/>
+	<style name="center_label_ar" isBlankWhenNull="true" fontName="Times New Roman" fontSize="11" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+	<style name="param_en" forecolor="#000000" hAlign="Left" vAlign="Middle" isBlankWhenNull="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2"/>
+	</style>
+	<style name="param_ar" forecolor="#000000" hAlign="Right" vAlign="Middle" markup="none" isBlankWhenNull="true" fontName="Times New Roman" fontSize="11" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2"/>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="2939c65c-904b-4875-af84-fd2585358a43">
+		<field name="inQuotation" class="java.lang.Boolean"/>
+		<field name="fromInventory" class="java.lang.Boolean"/>
+		<field name="description" class="java.lang.String"/>
+		<field name="quantity" class="java.lang.Integer"/>
+	</subDataset>
+	<parameter name="jobOrder" class="com.iassets.biomedical.entity.BioJobOrder"/>
+	<parameter name="device" class="com.iassets.biomedical.entity.BioHospitalDevice"/>
+	<parameter name="responsibleEngineer" class="com.iassets.common.entity.CommonEmployee"/>
+	<parameter name="hospDepHead" class="com.iassets.common.entity.CommonEmployee"/>
+	<parameter name="siteManager" class="com.iassets.common.entity.CommonEmployee"/>
+	<parameter name="mmpDepHead" class="com.iassets.common.entity.CommonEmployee"/>
+	<parameter name="hospAssistDir" class="com.iassets.common.entity.CommonEmployee"/>
+	<parameter name="hospDirector" class="com.iassets.common.entity.CommonEmployee"/>
+	<parameter name="locationName" class="java.lang.String"/>
+	<parameter name="operatingCompany" class="java.lang.String"/>
+	<parameter name="dirSupervisor" class="com.iassets.common.entity.CommonEmployee"/>
+	<parameter name="dirAdmin" class="com.iassets.common.entity.CommonEmployee"/>
+	<parameter name="dirSuperAdmin" class="com.iassets.common.entity.CommonEmployee"/>
+	<parameter name="currentLocIsHealthCenter" class="java.lang.Boolean"/>
+	<parameter name="repoHead" class="java.lang.String"/>
+	<parameter name="mmpDepSupervisor" class="com.iassets.common.entity.CommonEmployee"/>
+	<pageHeader>
+		<band height="107" splitType="Stretch">
+			<textField>
+				<reportElement x="387" y="0" width="168" height="72" uuid="a850fe68-5cb5-4c03-9709-f139906b546e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{repoHead}]]></textFieldExpression>
+			</textField>
+			<rectangle radius="5">
+				<reportElement x="151" y="75" width="281" height="27" uuid="9f52d3ce-9c70-4873-9605-8d4399bd91a5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="251" y="75" width="166" height="27" uuid="e78d18fc-d750-408c-a762-96e967dcea4e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="18" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[نموذج الصيانة الوقائية]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="162" y="75" width="89" height="27" uuid="176ef7fa-de77-4008-af49-691eb84c6a4d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="17" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[PPM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="72" width="17" height="29" uuid="0cdda17c-d0b8-4df5-84fe-3e1080db9f5c">
+					<printWhenExpression><![CDATA[false]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[B/]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="param_en" x="29" y="72" width="101" height="29" forecolor="#FF0000" uuid="d4c3d20f-3d03-483a-aaa4-ef046944c8f0">
+					<printWhenExpression><![CDATA[false]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="14" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{jobOrder}.getJobOrderNo()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="270" y="1" width="113" height="70" uuid="0a6d62ff-6b30-4d8c-ace6-4e1fdf5ace84"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Transparent" x="1" y="0" width="141" height="69" forecolor="#000000" backcolor="#FFFFFF" uuid="990ecdc9-f969-4ed0-8cd6-29580b67abdf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{operatingCompany}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="120">
+			<frame>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="555" height="40" uuid="34c923ec-2302-4ef2-a2c2-c5a54cc8d48c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement x="12" y="1" width="195" height="19" uuid="146e5f81-f526-4d89-a1c2-e687543d789d"/>
+					<box topPadding="1" leftPadding="1" rightPadding="1"/>
+					<textElement>
+						<font fontName="Times New Roman" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[Based to Reform]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="12" y="20" width="150" height="20" uuid="22aacf20-61ba-4057-8c42-278a8629ef75"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[By]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="162" y="20" width="45" height="20" uuid="eb4ab992-87a8-409b-a248-7f4251dc9d9d"/>
+					<box>
+						<leftPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[Sign]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="273" y="0" width="282" height="40" uuid="8a79cd54-11f0-4f85-ae6f-99e1da8c59ba"/>
+					<box topPadding="2">
+						<leftPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<text><![CDATA[DATE        /       / 143         H   ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="side_label_ar" positionType="Float" stretchType="RelativeToTallestObject" x="207" y="0" width="66" height="40" uuid="4a4f3640-ee76-4833-9471-e7ecdf448c8f"/>
+					<textElement verticalAlignment="Top">
+						<font fontName="Times New Roman" size="10" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<text><![CDATA[القائم بالصيانة]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="40" width="555" height="80" uuid="42c47fff-1a8e-4220-a3dd-afba27bf2c0e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement style="center_label_en" x="273" y="20" width="282" height="20" uuid="0f05f813-2266-439c-8960-c50e1be5ee3a"/>
+					<box>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="Times New Roman" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[BIO. MED SITE MANAGER]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="center_label_ar" x="0" y="0" width="117" height="40" uuid="e9939ca1-9379-483f-bd52-e9cd27a7bb12"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[ختم الموقع (المستشفي)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="center_label_ar" x="273" y="0" width="282" height="20" uuid="00140fdb-587f-4818-8ae6-d70beb9ad653"/>
+					<box>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[مدير موقع الصيانة الطبية]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="center_label_en" x="117" y="20" width="156" height="20" uuid="4a83bdcb-de2e-41f1-b858-0511e3de856c"/>
+					<box>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+						<font fontName="Times New Roman" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<text><![CDATA[MOH ENGINEER]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="param_ar" x="273" y="39" width="282" height="20" uuid="a5f7496a-8071-4de3-82dc-a0e1909b9ffc"/>
+					<box>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{siteManager}.getName()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="param_ar" x="117" y="39" width="156" height="20" uuid="c3888eed-ec81-41d6-a1d6-6e80c23bc388"/>
+					<box>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(($P{currentLocIsHealthCenter}) ? "" : $P{mmpDepHead}.getName())]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="param_ar" x="117" y="60" width="156" height="20" uuid="11abfd2a-1ebe-4dcf-ab2e-0b3bd19d7b62"/>
+					<box>
+						<leftPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" markup="none">
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="param_ar" x="273" y="60" width="282" height="20" uuid="c8e01921-1bb4-44fe-9245-176bd40a8018"/>
+					<box>
+						<leftPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" markup="none">
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Transparent" x="117" y="0" width="156" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="1cdcfc23-7421-48cd-a473-ae96011fb1b9"/>
+					<box>
+						<leftPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+						<font fontName="Times New Roman" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(($P{currentLocIsHealthCenter}) ? "مشرف الصيانة الطبية" : "رئيس قسم الصيانة الطبية")]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="422" splitType="Stretch">
+			<frame>
+				<reportElement style="fields_frame" positionType="Float" x="0" y="30" width="555" height="30" uuid="9de30ae7-2169-443f-9953-bd9d5a6f8d6d"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement style="side_label_en" stretchType="RelativeToTallestObject" x="263" y="0" width="62" height="30" uuid="9c644275-af72-4e03-8ca6-8c398f69f78d"/>
+					<textElement>
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<text><![CDATA[Phone No.:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="side_label_ar" stretchType="RelativeToTallestObject" x="511" y="0" width="44" height="30" uuid="630db290-7e44-46eb-98f4-baa6ef53367e"/>
+					<textElement>
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<text><![CDATA[تليفـون :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="side_label_en" stretchType="RelativeToTallestObject" x="1" y="0" width="74" height="30" uuid="43e62ad0-c638-4a37-86bf-4abfeba46118"/>
+					<textElement>
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<text><![CDATA[Department : ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="side_label_ar" stretchType="RelativeToTallestObject" x="224" y="0" width="38" height="30" uuid="5985369b-e9b9-4329-9124-3df0db74b67a"/>
+					<box>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<text><![CDATA[القسم :]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="param_ar" stretchType="RelativeToTallestObject" x="325" y="0" width="186" height="30" uuid="cc89e2b5-86c7-4a36-9ea5-ddd5cf388eae"/>
+					<textElement>
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{responsibleEngineer}.getMobile()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="param_ar" stretchType="RelativeToTallestObject" x="75" y="0" width="149" height="30" uuid="c32c0357-1866-49ed-8750-20a74c09cd79"/>
+					<textElement>
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{device}.getHospitalDepartment().getName()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement style="fields_frame" positionType="Float" x="0" y="60" width="555" height="30" uuid="b9060dcd-66b9-496a-bbeb-8ae9cdbab0dd"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement style="side_label_ar" stretchType="RelativeToTallestObject" x="223" y="0" width="39" height="30" uuid="4ecd9617-c49e-4556-813c-ea53c8625e16"/>
+					<box>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font pdfFontName="Times New Roman"/>
+					</textElement>
+					<text><![CDATA[الجهاز :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="side_label_en" stretchType="RelativeToTallestObject" x="0" y="0" width="70" height="30" uuid="f38a1a8c-cc6d-4128-9955-2c4191f0f2a5"/>
+					<textElement>
+						<font pdfFontName="Times New Roman"/>
+					</textElement>
+					<text><![CDATA[Equipment : ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="side_label_en" stretchType="RelativeToTallestObject" x="263" y="0" width="82" height="30" uuid="a5715d12-daf2-4e51-9495-361cebdf5cc3"/>
+					<textElement>
+						<font pdfFontName="Times New Roman"/>
+					</textElement>
+					<text><![CDATA[Manufacture :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="side_label_ar" stretchType="RelativeToTallestObject" x="499" y="0" width="56" height="30" uuid="f3534eef-1c04-4ebc-b545-7fadb478321c"/>
+					<box rightPadding="3">
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement>
+						<font pdfFontName="Times New Roman"/>
+					</textElement>
+					<text><![CDATA[الصـانـع :]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="param_ar" stretchType="RelativeToTallestObject" x="344" y="0" width="155" height="30" uuid="7889c241-dafb-4c8e-bd7a-783883dde36e"/>
+					<textElement>
+						<font pdfFontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{device}.getManufacturerName()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="param_ar" stretchType="RelativeToTallestObject" x="70" y="0" width="153" height="30" uuid="e119103f-2477-413e-a344-9e5a8f92aa40"/>
+					<textElement>
+						<font pdfFontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{device}.getName()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement style="fields_frame" positionType="Float" x="0" y="90" width="555" height="30" uuid="744b7276-c1f3-4fb4-9d95-e6fd5d1c21ad"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement style="side_label_ar" stretchType="RelativeToTallestObject" x="220" y="0" width="42" height="30" uuid="099f05d0-5b96-4255-9dde-04ebaa8dafdc"/>
+					<box>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font pdfFontName="Times New Roman"/>
+					</textElement>
+					<text><![CDATA[الموديل :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="side_label_ar" stretchType="RelativeToTallestObject" x="525" y="0" width="30" height="30" uuid="00cca1ec-07da-4253-b56a-b75de80e58b9"/>
+					<textElement>
+						<font size="10" pdfFontName="Times New Roman"/>
+					</textElement>
+					<text><![CDATA[الوكيل:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="side_label_en" stretchType="RelativeToTallestObject" x="404" y="0" width="35" height="30" uuid="3cec0927-b4fc-47f6-8263-cb48ef23b539"/>
+					<textElement>
+						<font size="10" pdfFontName="Times New Roman"/>
+					</textElement>
+					<text><![CDATA[Agent :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="side_label_ar" stretchType="RelativeToTallestObject" x="355" y="0" width="48" height="30" uuid="f9f5e4e6-9919-4367-a25c-9655724fa819"/>
+					<box rightPadding="3">
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font size="10" pdfFontName="Times New Roman"/>
+					</textElement>
+					<text><![CDATA[رقم مسلسل :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="side_label_en" stretchType="RelativeToTallestObject" x="262" y="0" width="24" height="30" uuid="4a915ce5-fa11-4dd4-85da-c81bd781c0e0"/>
+					<textElement>
+						<font size="10" pdfFontName="Times New Roman"/>
+					</textElement>
+					<text><![CDATA[SN :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="side_label_en" stretchType="RelativeToTallestObject" x="1" y="0" width="52" height="30" uuid="a04e6b94-828e-4923-80b0-948e04c04708"/>
+					<textElement>
+						<font pdfFontName="Times New Roman"/>
+					</textElement>
+					<text><![CDATA[Model :]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="param_ar" stretchType="RelativeToTallestObject" x="439" y="0" width="86" height="30" uuid="29959ecb-b421-4f62-9971-dcaf315d2974"/>
+					<textElement>
+						<font pdfFontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{device}.getAgentName()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="param_ar" stretchType="RelativeToTallestObject" x="286" y="0" width="70" height="30" uuid="71a21334-009f-4b14-9753-a53038b849ef"/>
+					<textElement>
+						<font pdfFontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{device}.getSerialNo()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="param_ar" stretchType="RelativeToTallestObject" x="53" y="0" width="167" height="30" uuid="c636e0c9-61c8-4523-a838-0874a44844fa"/>
+					<textElement>
+						<font pdfFontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{device}.getModel()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement style="fields_frame" positionType="Float" x="0" y="120" width="555" height="30" uuid="c86b5fac-eabc-4126-a53c-2b48277dc7b0"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement style="side_label_ar" stretchType="RelativeToTallestObject" x="0" y="0" width="555" height="30" uuid="5c85ed18-c49b-46ff-a8b1-93561530d147"/>
+					<box rightPadding="0">
+						<leftPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font pdfFontName="Times New Roman"/>
+					</textElement>
+					<text><![CDATA[نوع أمر العمل :  PPM]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="0" y="150" width="555" height="95" uuid="c1212c0a-8a75-414c-89d1-292a34ca132b"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement x="142" y="45" width="109" height="15" uuid="9cbd8e48-1c3b-493e-8791-b42f41b47c46"/>
+					<textElement textAlignment="Center">
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[مشرف الصيانة]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="0" width="105" height="19" uuid="fc7d3780-1d57-4a27-a57e-65756f2681c8"/>
+					<box leftPadding="5"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="9" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[REQUESTED BY]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="142" y="18" width="109" height="28" uuid="326c6fb3-edff-4962-a80e-3b75127b0d1a"/>
+					<textElement textAlignment="Center">
+						<font fontName="Times New Roman" isBold="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[MAINTENANCE
+SUPERVISOR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="470" y="1" width="85" height="15" uuid="bf2226e0-c543-4111-b6bb-39aa3b159e55"/>
+					<box rightPadding="5"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+						<font fontName="Times New Roman" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<text><![CDATA[المهندس المستلم]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="293" y="0" width="94" height="15" uuid="b126fb19-9f47-47fd-a223-e6c5a0c60af9"/>
+					<box leftPadding="5"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="9" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[RECEIVED BY]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="432" y="25" width="79" height="15" uuid="45f4f800-c8ed-4eca-90fa-3bc47d3ce2c2"/>
+					<textElement textAlignment="Center">
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[Equipment]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="432" y="40" width="79" height="15" uuid="5be1ff46-2f2f-4c30-b41a-42903c7f82a9"/>
+					<textElement textAlignment="Center">
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[للجهاز]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="300" y="25" width="66" height="15" uuid="5868a301-ad9a-4694-8286-e727624a41ba"/>
+					<textElement textAlignment="Center">
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[Work Order]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="301" y="40" width="65" height="15" uuid="402f971d-882b-418c-9c99-5fb3434e084d"/>
+					<textElement textAlignment="Center">
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[لأمر عمل]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="side_label_en" x="294" y="66" width="45" height="15" uuid="ab8dca6c-af3b-4aae-a0e6-43823cb02ea4"/>
+					<box leftPadding="5"/>
+					<textElement>
+						<font fontName="Times New Roman" size="9" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[NAME :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="side_label_en" x="294" y="80" width="45" height="15" uuid="c24318c5-d892-4428-9d9c-a8ea42c80aa7"/>
+					<box leftPadding="5"/>
+					<textElement>
+						<font fontName="Times New Roman" size="9" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[SIGN :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="18" width="105" height="27" uuid="a7cee646-9a8a-437a-b724-bc93dfdb2f15"/>
+					<textElement textAlignment="Center">
+						<font fontName="Times New Roman" isBold="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[DEPARTMENT
+SUPERVISOR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="side_label_en" x="0" y="78" width="38" height="17" uuid="90c333ca-864f-4594-8bce-8521d96005d9"/>
+					<box leftPadding="5"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="9" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[SIGN :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="date" x="453" y="80" width="100" height="15" uuid="68a6d4ce-00ad-4edc-a581-7ecc29498238"/>
+					<textElement>
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<text><![CDATA[    /     / 143   H]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="date" x="193" y="78" width="100" height="17" uuid="8d391a4d-f5f7-448c-9851-646b72843003"/>
+					<textElement>
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<text><![CDATA[    /     / 143   H]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement x="250" y="24" width="36" height="31" uuid="abf2ac36-db38-4b3d-9f4a-8e097ad27b78"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="511" y="24" width="36" height="31" uuid="7a673a1d-1371-4399-a52e-7d2017f1fc97"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="366" y="24" width="36" height="31" uuid="80e6de2a-b6d3-47bb-b69f-74fc6b43bf51"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="106" y="24" width="36" height="31" uuid="384f8fb0-91c5-4a07-b78d-c16abf6f1b05"/>
+				</rectangle>
+				<textField isBlankWhenNull="true">
+					<reportElement x="339" y="66" width="214" height="15" uuid="c9b6c291-8bb8-4b1f-9562-435a4391ac38"/>
+					<textElement>
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{responsibleEngineer}.getName()]]></textFieldExpression>
+				</textField>
+				<textField pattern="" isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="142" y="59" width="109" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="f83d2cf5-6c07-416d-8ff9-0d8e989a6c52"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+						<font fontName="Times New Roman" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(($P{currentLocIsHealthCenter}) ? "" : $P{mmpDepSupervisor}.getName())]]></textFieldExpression>
+				</textField>
+				<textField pattern="" isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="1" y="57" width="105" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="7b8744ae-734b-4652-8d52-b81977efe45c"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+						<font fontName="Times New Roman" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{hospDepHead}.getName()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Transparent" x="1" y="44" width="105" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="046488ff-70da-4844-9772-5f4ddc49d276"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+						<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(($P{currentLocIsHealthCenter}) ? "مدير المركز" : "مشرف القسم")]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="side_label_ar" x="251" y="1" width="42" height="93" uuid="1363d151-f498-41ca-9f19-80e41786967f"/>
+					<box topPadding="3" rightPadding="5">
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font fontName="Times New Roman" size="10" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<text><![CDATA[الطالب :]]></text>
+				</staticText>
+				<textField pattern="" isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="106" y="0" width="145" height="19" forecolor="#000000" backcolor="#FFFFFF" uuid="b2937062-1dba-4cf6-9307-c4afae7b5f18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+						<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<textFieldExpression><![CDATA[($P{jobOrder}.getMaintenanceRequest() == null)?"":$P{jobOrder}.getMaintenanceRequest().getEndUserName()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<componentElement>
+				<reportElement key="table" style="table" positionType="Float" x="0" y="372" width="555" height="50" isRemoveLineWhenBlank="true" uuid="dad1e4eb-5a6c-4b06-966e-47f798ef3c0e">
+					<printWhenExpression><![CDATA[false && ($P{jobOrder}.getSpareParts() != null && $P{jobOrder}.getSpareParts().size() != 0)]]></printWhenExpression>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 1" uuid="cf4dbd50-0a49-4aa3-88ce-3950d00d0ed0">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{jobOrder}.getSpareParts())]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="40" uuid="e0b198b4-2076-42eb-8d05-aee418387601">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement style="table_TH" x="0" y="0" width="40" height="30" uuid="1c00a7b1-ba80-4040-9ce2-3443f8481243"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<bottomPen lineWidth="0.75"/>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="11" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+								</textElement>
+								<text><![CDATA[S.N.]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="23" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement mode="Opaque" x="0" y="0" width="40" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="596d2bbe-b9dc-4096-a62d-21c62d497807"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="243" uuid="f1ed68e6-1f19-4130-8df8-84c7a622cc61">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement style="table_TH" x="125" y="0" width="118" height="30" uuid="c234c850-e96b-479d-b001-b9bcf05cfde7"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="0.0"/>
+									<bottomPen lineWidth="0.75"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="11" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+								</textElement>
+								<text><![CDATA[قطع الغيار المطلوبة للاصلاح]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="table_TH" x="0" y="0" width="125" height="30" uuid="224bd835-f435-464d-85bb-66ff70e8733f"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<bottomPen lineWidth="0.75"/>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="11" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+								</textElement>
+								<text><![CDATA[Spare Parts Req. Repair]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="23" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement mode="Opaque" x="0" y="0" width="243" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="7bd8297d-70f7-419e-9d7c-f485d8adcfae"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="130" uuid="9fcf7945-87fe-4cf3-a636-6f72399da63b">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement style="table_TH" x="71" y="0" width="59" height="30" uuid="05769bdf-3226-4dda-be60-7b6177ec686b"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="0.0"/>
+									<bottomPen lineWidth="0.75"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="11" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+								</textElement>
+								<text><![CDATA[رقم الصنف]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="table_TH" x="0" y="0" width="71" height="30" uuid="c9778144-1e40-4a87-abec-a7d9ed07e43f"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="0.75"/>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="11" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+								</textElement>
+								<text><![CDATA[Part Number]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="23" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="130" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="e5b98406-aeda-4ea2-a432-a658617ec45d"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Times New Roman" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="61" uuid="4c9275c2-b2ea-475a-aad2-b61b3ea77270">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement style="table_TH" x="0" y="0" width="29" height="30" uuid="ccec0e27-dc2b-4e1e-8166-2f91a99d7f7b"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="0.75"/>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="11" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+								</textElement>
+								<text><![CDATA[QTY]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="table_TH" x="29" y="0" width="32" height="30" uuid="439bd39e-b534-47f3-b9b0-4e7ef10cadeb"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="0.0"/>
+									<bottomPen lineWidth="0.75"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Times New Roman" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[الكمية]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="23" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement mode="Opaque" x="0" y="0" width="61" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="4eb84096-217b-446a-9c85-03a4fdbc3dcb"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="81" uuid="66127a71-6ee0-481a-9ec4-f348700a96fd">
+						<jr:columnHeader height="30" rowSpan="1">
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="81" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="7297fc39-d446-4214-864b-a43fe103212e"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Times New Roman" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[In Quotation]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="23" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="true">
+								<reportElement mode="Opaque" x="0" y="0" width="81" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="33d6a45d-07f9-45b0-b834-ba129a789c50"/>
+								<box>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Times New Roman" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[($F{inQuotation} == null)?"-":(($F{inQuotation})?"نعم":"لا")]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<frame>
+				<reportElement style="fields_frame" positionType="Float" x="0" y="0" width="555" height="30" uuid="ef692993-962a-4d36-b353-1b1da1d21e1c"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement style="side_label_ar" stretchType="RelativeToTallestObject" x="511" y="0" width="44" height="30" uuid="efd3254f-02d9-4866-a21c-610a968c4e0b"/>
+					<textElement>
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<text><![CDATA[الموقع  :]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="param_ar" stretchType="RelativeToTallestObject" x="1" y="0" width="510" height="30" uuid="93bb21a1-d830-4f47-beb9-04cd9b0ae2ec"/>
+					<textElement>
+						<font fontName="Times New Roman" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(($P{currentLocIsHealthCenter}) ? $P{device}.getSite().getName() : $P{device}.getHospital().getName())]]></textFieldExpression>
+				</textField>
+			</frame>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="245" width="555" height="31" forecolor="#000000" backcolor="#FFFFFF" uuid="bd1af01b-6e13-48a8-a705-f294a2d42864"/>
+				<box>
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="13" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[العمل الذي تم / ملاحظات :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="276" width="555" height="96" uuid="cf966278-648c-4285-b8f8-5363719ccc88"/>
+			</rectangle>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="spare parts request" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" uuid="51c8e24f-a102-4e87-85e5-de66d75e25ef">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="341"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="0.25" lineColor="#000000"/>
+			<topPen lineWidth="0.25"/>
+			<leftPen lineWidth="0.25"/>
+			<bottomPen lineWidth="0.25"/>
+			<rightPen lineWidth="0.25"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+			<topPen lineWidth="1.0"/>
+			<leftPen lineWidth="1.0"/>
+			<bottomPen lineWidth="1.0"/>
+			<rightPen lineWidth="1.0"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="side_label_en" forecolor="#000000" hAlign="Left" vAlign="Middle" pattern="" isBlankWhenNull="true" fontName="Times New Roman" fontSize="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<box leftPadding="3"/>
+	</style>
+	<style name="side_label_ar" forecolor="#000000" fill="Solid" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" fontSize="13" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<pen lineWidth="0.25"/>
+		<box rightPadding="3">
+			<rightPen lineWidth="0.25" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="fields_frame" fill="Solid">
+		<box>
+			<pen lineWidth="0.25"/>
+			<topPen lineWidth="0.25"/>
+			<leftPen lineWidth="0.25"/>
+			<bottomPen lineWidth="0.25"/>
+			<rightPen lineWidth="0.25"/>
+		</box>
+	</style>
+	<style name="date" hAlign="Center" vAlign="Middle" fontSize="10" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<style name="dotted_line">
+		<pen lineWidth="0.25" lineStyle="Dotted" lineColor="#000000"/>
+	</style>
+	<style name="center_label_en" hAlign="Center" vAlign="Middle" fontName="Times New Roman" fontSize="10" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" isPdfEmbedded="true"/>
+	<style name="center_label_ar" isBlankWhenNull="true" fontName="Times New Roman" fontSize="11" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+	<style name="param_en" forecolor="#000000" hAlign="Left" vAlign="Middle" isBlankWhenNull="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2"/>
+	</style>
+	<style name="param_ar" forecolor="#000000" hAlign="Right" vAlign="Middle" markup="none" isBlankWhenNull="true" fontName="Times New Roman" fontSize="11" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2"/>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="b03d8d46-146c-40d0-9c85-a7eac527e3c7">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     bio_job_order_spare_part.`quantity` AS bio_job_order_spare_part_quantity,
+     bio_job_order_spare_part.`description` AS bio_job_order_spare_part_description,
+     bio_job_order_spare_part.`from_inventory` AS bio_job_order_spare_part_from_inventory
+FROM
+     `bio_job_order_spare_part` bio_job_order_spare_part]]>
+		</queryString>
+		<field name="bio_job_order_spare_part_quantity" class="java.lang.Long"/>
+		<field name="bio_job_order_spare_part_description" class="java.lang.String"/>
+		<field name="bio_job_order_spare_part_from_inventory" class="java.lang.Boolean"/>
+	</subDataset>
+	<parameter name="ref_no" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="department" class="java.lang.String"/>
+	<parameter name="equipment" class="java.lang.String"/>
+	<parameter name="manufacture" class="java.lang.String"/>
+	<parameter name="requested_by" class="java.lang.String"/>
+	<parameter name="signature" class="java.lang.String"/>
+	<parameter name="no" class="java.lang.String"/>
+	<parameter name="date_day" class="java.lang.String"/>
+	<parameter name="date_month" class="java.lang.String"/>
+	<parameter name="date_year" class="java.lang.String"/>
+	<parameter name="attach" class="java.lang.String"/>
+	<background>
+		<band height="802">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="802" uuid="ef0db9a5-23b2-4a66-97b5-b9112636361a"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</background>
+	<summary>
+		<band height="754" splitType="Stretch">
+			<rectangle>
+				<reportElement x="47" y="698" width="468" height="26" uuid="fba4590b-6a72-4960-9a5e-2d90878ee921"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="147" y="139" width="286" height="27" uuid="e78d18fc-d750-408c-a762-96e967dcea4e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="18" isBold="true" isItalic="false" isUnderline="true" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[SPARE PARTS REQUEST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="41" y="39" width="296" height="73" forecolor="#000000" backcolor="#FFFFFF" uuid="410e4d24-88f2-4cb4-b78a-5bbb04f8dcdf"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="13" isBold="false" isItalic="false" isUnderline="true" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[AL-MAJAL AL-ARABI GROUP
+NAJRAN BIOMEDICAL PROGECT
+THAR GENERAL HOSPITAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="116" y="199" width="104" height="21" uuid="72cca90b-3a84-4605-bbee-a10da8734220"/>
+				<textElement>
+					<font fontName="Times New Roman" size="13"/>
+				</textElement>
+				<text><![CDATA[DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="116" y="263" width="104" height="21" uuid="4bf7d883-f7ea-4829-9e91-d231a03abc47"/>
+				<textElement>
+					<font fontName="Times New Roman" size="13"/>
+				</textElement>
+				<text><![CDATA[MANUFACTURER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="116" y="242" width="104" height="21" uuid="982d49e5-1caf-449f-b19a-34ce93e575bb"/>
+				<textElement>
+					<font fontName="Times New Roman" size="13"/>
+				</textElement>
+				<text><![CDATA[EQUIPMENT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="116" y="221" width="104" height="21" uuid="5531ca64-eaa0-43eb-902f-213745efdf6f"/>
+				<textElement>
+					<font fontName="Times New Roman" size="13"/>
+				</textElement>
+				<text><![CDATA[DEPARTMENT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="116" y="177" width="104" height="22" uuid="645cd92c-4d51-41f9-acfc-6afe393212dd"/>
+				<textElement>
+					<font fontName="Times New Roman" size="13"/>
+				</textElement>
+				<text><![CDATA[REF NO.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="337" y="179" width="100" height="20" uuid="0b17afaf-0281-409c-ab7e-4a79bc3164cf"/>
+				<textElement>
+					<font fontName="Times New Roman" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ref_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="200" width="100" height="20" uuid="379a2ff5-4743-4214-8c21-bf243ff55710"/>
+				<textElement>
+					<font fontName="Times New Roman" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="222" width="100" height="20" uuid="80ab835b-6422-41e0-acf5-34d0a19e92f6"/>
+				<textElement>
+					<font fontName="Times New Roman" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{department}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="243" width="100" height="20" uuid="50b8b0b3-fa66-4e67-9166-6016a8071aab"/>
+				<textElement>
+					<font fontName="Times New Roman" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{equipment}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="264" width="100" height="20" uuid="24890f8e-1dfb-4088-8682-9525b5f2169f"/>
+				<textElement>
+					<font fontName="Times New Roman" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{manufacture}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="290" y="179" width="47" height="20" uuid="185ea8ee-efe8-482e-bb3d-f3a33f4e6be0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="200" width="47" height="20" uuid="c54a764b-b146-41cf-bb34-8da6ac507b14"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="222" width="47" height="20" uuid="0616f8c3-2b1a-43c1-a05b-39b2e9611e09"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="243" width="47" height="20" uuid="f1c3d65f-4964-4a84-a443-77dea2b1d836"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="264" width="47" height="20" uuid="532b8a2a-3211-47da-83e0-e2afc93e5333"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="78" y="535" width="174" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="5e30ff14-d38d-4b92-8906-1974e072e4c2"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{requested_by}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="78" y="590" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="86d2333d-2479-4687-83bb-cdaea65223bc"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[SIGNATURE.]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="78" y="610" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="90292df3-6193-4622-b78c-ff5b87276125"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{signature}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="470" y="696" width="45" height="28" uuid="9fbc5ab3-8a03-449e-a985-87b72a6e0a2a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الرقم:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="698" width="186" height="28" uuid="bfb19149-8857-4709-a11a-9bb01a445ed0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[التاريخ:          /           /           14هـ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="168" y="698" width="45" height="28" uuid="69b5bd1f-105a-4f8c-ba39-d132122778df"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[المرفقات:(]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="55" y="698" width="23" height="28" uuid="adb81ce3-3830-41fe-8a64-200dcce1fe38"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="435" y="734" width="80" height="20" uuid="a2bfc6a3-ccb6-4ff9-918d-0a89684a2261"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[تليفون ثار نجران  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="734" width="64" height="20" uuid="4452f792-1ae0-410d-af11-345b4045188c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0538577946]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="734" width="46" height="20" uuid="f3d503d5-a976-4039-902b-4f58bcf88522"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-    فاكس :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="734" width="72" height="20" uuid="ed4cdc1a-d09e-4d9d-8930-706da77bc8e6"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0175456852]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="734" width="135" height="20" forecolor="#3300CC" uuid="74cecfdf-4d96-446a-90d6-24acd83b65d6"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[mmedo1905@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="178" y="734" width="63" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="88cc5754-763b-4092-b29a-4138016b0f30"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:   Mail   - ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="78" y="515" width="120" height="20" uuid="d9c5f1b2-4732-4ac0-9825-f68c267a1d2b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="13" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[REQUESTED BY:]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="41" y="328" width="472" height="79" uuid="558ecfcc-43c1-49d9-a262-13a89a4c4239"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 1" uuid="b6895cfd-47ec-47c0-bca6-65da2aceda5b">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="133" uuid="945a4aa3-5848-4c1a-bd37-3bd6988c8c5e">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="132" height="30" uuid="94da28d7-46dc-4f12-92df-983d0b62d5a4"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[NO.]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement mode="Transparent" x="0" y="0" width="133" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="c6316ecb-2c08-4897-86f8-e0b2b6065c5c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Times New Roman" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="173" uuid="206c7dc1-7141-43e5-a506-20236a9f842b">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="173" height="30" uuid="3076bd51-0a74-4bf6-8b8b-67b0774e8166"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ITEM DESCRIPION]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="173" height="20" uuid="78437de6-7bc9-4f18-8e90-69211922665f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="12" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{bio_job_order_spare_part_description}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="164" uuid="6b4bec00-0fd7-46a0-928c-ed64eedb0d0e">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="164" height="30" uuid="b88ca33a-4027-45c1-a1a5-a444cba96c6e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[QTY]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="164" height="20" uuid="486325da-12b4-483b-bac0-893057fd5587"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="12" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{bio_job_order_spare_part_quantity}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<textField>
+				<reportElement mode="Transparent" x="68" y="698" width="100" height="28" forecolor="#000000" backcolor="#FFFFFF" uuid="ffb4c6e1-016e-49ad-a217-96ecd3507721"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{attach}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="271" y="698" width="22" height="26" forecolor="#000000" backcolor="#FFFFFF" uuid="3fee08c0-dc70-431c-ba87-632a9e08dace"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date_year}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="304" y="698" width="22" height="26" forecolor="#000000" backcolor="#FFFFFF" uuid="c5eb162c-047a-487b-8eb2-81e869432bf2"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date_month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="345" y="698" width="22" height="26" forecolor="#000000" backcolor="#FFFFFF" uuid="09e76d91-8ec9-4878-82f9-00e74897fbad"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date_day}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

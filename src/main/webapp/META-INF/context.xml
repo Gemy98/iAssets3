@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context reloadable="true" privileged="true">
+
+    <!-- Default set of monitored resources -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+	    
+    <!-- Disable session persistence across Tomcat restarts -->
+    <Manager pathname="" />
+    
+<!-- 
+    <Parameter name="dbs" value="iassets_demo" override="false" />
+	<Parameter name="dbu" value="iassetsapp" override="false" />
+	<Parameter name="dbup" value="iassetsappP@ssw0rd" override="false" /> 
+-->
+	    
+	<Realm className="org.apache.catalina.realm.JDBCRealm" 
+	connectionURL="jdbc:mysql://localhost:3306/iassets_hail?user=root&amp;password=root" 
+	driverName="com.mysql.jdbc.Driver" 
+	userTable="common_user" userNameCol="user_name" userCredCol="password" 
+	userRoleTable="common_user_role" roleNameCol="role_name" />
+	
+
+</Context>

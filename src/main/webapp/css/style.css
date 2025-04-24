@@ -1,0 +1,206 @@
+@import url("FontAwesome/css/font-awesome.css");
+
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+ font-family: GETwo;
+ src: url(ArabicFonts/GESSTwoBold.otf);
+}
+@font-face {
+ font-family: GEUnique;
+ src: url(ArabicFonts/GESSUniqueBold.otf);
+}
+@font-face {
+ font-family: Swissra;
+ src: url(ArabicFonts/SwissraBold.otf);
+}
+
+html, body{height:100%;margin: 0;padding: 0;border: 0}
+body{color:#444;font-family:Arial;font-size:16px;background: #ccc/*url(../images/bg.png) repeat*/;}
+.pure-skin-mine input, .pure-skin-mine select, .pure-skin-mine textarea {color:#777;font-size: 100%;margin: 0;vertical-align: baseline;*vertical-align: middle}
+.pure-skin-mine select{min-width: 100px}
+.ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {min-width: 49% !important} /* calendar style */
+.pure-skin-mine button, .pure-skin-mine input[type="button"], .pure-skin-mine input[type="submit"]{color:#fff;margin-top:20px; margin-bottom: 50px}
+
+/* layout style rules */
+div#container {min-height:100%;position:relative;margin: 0 auto;padding: 0;border: 0;width: 960px;background: #FFF}
+/* div#top {background: url(../image/top_bg.png) repeat-x;height: 20px;} */
+div#header{position: relative;}
+div#left_banner_sec{position: absolute;z-index:100;top:0;left:0;margin-left:35px;margin-top:50px;}
+img#iassets_logo{display: block;}
+img#iassets_logo:hover{cursor: pointer;}
+div#logo {background: url(../image/header_bg.png) repeat-x;height: 150px;position: relative;}
+
+
+span#directorate_name, span#current_hosp_name{position: absolute;right: 110px; font-size: 19px; font-family: GEUnique}
+span#directorate_name{top: 40px; color: #009966}
+span#current_hosp_name{top: 65px; color: #A48741}
+
+div#session_info{background-color:/*#A29062*/ #00714f ;line-height:30px;color: #fff;padding: 0 15px; font-family: Arial}
+a.lang_bar{display:block;color: #fff;text-decoration: none;font-weight: bold} 
+a.lang_bar:hover{color:#FFFF00;}
+.ar_lang{text-align: right}
+.en_lang{text-align: left}
+#top_menu{position:absolute;top:0;left:0;list-style-type:none;margin:0 0 0 15px;padding: 0}
+#top_menu li{float:right}
+#top_menu li a{font-size:15px;font-weight: bold;padding: 0 5px;color:#fff;text-decoration: none;}
+#top_menu li a:hover{color:#FFFF00;}
+#top_menu li i{margin-left: 3px}
+.breadcrumbs{display:inline-block;font-size: 15px; font-weight: bold; color:#FFFF00}
+
+div#footer {background: #EAE9D5;text-align: center;font-size: 0.9em;padding: 10px 0;color: #7A6B43;font-weight: normal;line-height: 20px;width:100%;position:absolute;bottom:0;left:0;}
+div#footer a{text-decoration: none; color: #7A6B43; outline: none;}
+div#footer a:hover{color: #a79461}
+.details_container > table {width: 100%}
+
+div#content {padding: 30px 15px 86px 15px} /* bottom padding = footer height + 30px */
+#side_menu_container{padding-top:25px}
+#content_container{padding: 0;padding-right: 25px; margin: 0}
+
+table.layout_grid{border:0;margin:0;width:100%}
+table.layout_grid > tr > td, table.layout_grid > tbody > tr > td{padding:0 5px 10px 0;margin:0}
+table.basic_page{width: 10%}
+table.basic_page td{width: 10%;white-space:nowrap;overflow: visible}
+
+h1{font-size:1.4em;font-weight:bold;text-align: center;}
+h2{font-size:1.2em;font-weight:bold}
+
+/*
+.details_container > input[type='button'] {
+	margin-top: 5px
+}
+*/
+
+a.attach_link{display: block;outline: none;direction: ltr;text-align: right}
+a.attach_link + a.attach_link{padding-top: 5px}
+.error_msg{color:#f00 ; text-align: center}
+.warning_msg{color:#f7f700; text-align: cente}
+.success_msg{color:#00E400; text-align: cente}
+.requiredField{color:#f00; font_size:25px;margin-right:10px}
+ul.uploadedFilesList{list-style: none;}
+ul.uploadedFilesList a{outline:none;float:right;margin-left:7px;color: #555;text-decoration: none;font-size: 0.9em}
+ul.uploadedFilesList a:hover{text-decoration: underline;}
+ul.uploadedFilesList img{width:13px;margin-top:3px}
+.hidden{display: none}
+
+.page_title{color:#333}
+h1.error{margin:0;padding:0;color:#f00}
+label.error {margin-right: 5px !important;color: #F00 !important;/*font-weight: bold !important*/}
+.pure-skin-mine input.error, .pure-skin-mine textarea.error, .pure-skin-mine select.error {background: #FFC;border: 1px solid #FF0000 !important}
+div.file-list {margin: 8px auto 5px auto}
+div.file-list > div {display:inline-block; background-color: #F5F5F5;border-radius: 3px;font: 11px Verdana,Geneva,sans-serif;margin-left: 5px;margin-bottom: 5px;padding: 5px;}
+/*div.file-list > span {display: block;background-color: #F5F5F5;border-radius: 3px;font: 11px Verdana,Geneva,sans-serif;margin-left: 5px;margin-bottom: 5px;padding: 5px;}*/
+.clearer {height: 1px;clear: both}
+/*
+h2{text-align:center}
+table.form-layout{display:block;margin:0 auto;border:0;width:50%}
+.me-side-label{font-weight:bold;text-align:left}
+input[type='submit']{padding:4px 10px;border:1px solid #777;color:#444}
+table#login-layout{border:1px solid #777;padding:20px 0px}
+table#login-layout td{text-wrap:unrestricted;}
+table#common-menu a{color:#C60;text-decoration:none}
+table#common-menu a:hover{font-weight:bold}
+table#common-menu td{white-space: nowrap;border-right:1px solid #FFF;padding:0 5px}
+table#common-menu td:first-child{border:none}
+*/
+
+.ui-widget {font-size:.9em}
+#ui-datepicker-div{border: 1px solid #aaaaaa;}
+.ui-datepicker-header{border: 1px solid #aaaaaa;background: #cccccc url(jquery-ui-themes-1.10.4/themes/flick/images/ui-bg_highlight-soft_50_dddddd_1x100.png) 50% 50% repeat-x;}
+.ui-datepicker th{background: none repeat scroll 0 0 #555555;color: #FFFFFF;text-transform: capitalize;}
+
+.side_label_middle{vertical-align: middle;text-align: left;font-weight:bold;padding-right:0 !important;width:50px;white-space:nowrap;overflow: visible; }
+.side_label_top{vertical-align: top;text-align: left;font-weight:bold;padding-right:0 !important;width:50px;white-space:nowrap;overflow: visible;}
+/*a#print-letter-btn{padding:5px 10px;background:#333;color:#FFF;text-decoration:none}*/
+
+/*#notifications_Container div{height:0; overflow:visible}*/
+#notifications_Container div{/*display:inline-block;*/line-height:20px ;border-radius: 3px; background: #e10c00;color: #fff; font-size: 1em; font-weight: bold; padding: 5px; margin-bottom: 10px; /*margin-left: 10px*/}
+#notifications_Container a{padding: 0 3px; color:#fff}
+#notifications_Container img{float:right; margin-left:12px; height:20px}
+
+#page_mask{   
+    z-index:1001;
+
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+ 
+    background-color: black;
+    opacity:.8;
+    filter: alpha(opacity=80); 
+    
+    padding-top: 10%;
+    text-align: center;
+    vertical-align:middle;
+    
+    color:#fff;
+    font-size: 20px;
+    font-weight: bold;
+    line-height:40px
+}
+
+/* left to right mark : mix text direction inline to solve mixed text display problem */
+*:after {content: "\200E";}
+
+
+.text_view{ border:none !important ;background: inherit !important;}
+
+a.close_btn{text-decoration: none;float:left; font-weight: bold}
+a.close_btn:hover{color:yellow !important}
+
+input.close_btn {
+    background-color: #3355ba !important;
+    color: #fff !important;
+    border: medium none rgba(0, 0, 0, 0);
+    border-radius: 2px;
+    font-size: 100%;
+    font-family:sans-serif;
+    padding: 0.5em 1.5em;
+    text-decoration: none;
+    transition: box-shadow 0.1s linear 0s;
+    -moz-user-select: none;
+    cursor: pointer;
+    display: inline-block;
+    line-height: normal;
+    text-align: center;
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+
+#report_type_options_layout td{height: 25px;vertical-align: top}
+
+.pure-button-primary + .pure-button-primary{margin-right: 20px !important}
+
+.pure-button-primary{width: 140px}
+
+.appendGrid td {
+    padding: 2px 5px;
+}
+
+.appendGrid td[class*="first"]{
+    padding: 2px;
+    width: 1px
+}
+
+table.data_table{border-collapse:collapse;margin-top:20px}
+table.data_table th{background-color:#ddd;font-size: larger;}
+table.data_table td, table.data_table th{padding:15px 10px;border:1px solid #ccc}
+table.data_table tr:nth-child(even) {background-color: #eee;}
+table#site_list{width: 60%}
+
+/* table sorter */
+table.tablesorter{
+	border-collapse: collapse !important;background: #fff !important; 
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+    background-color: #ddf !important; 
+}
+table.tablesorter tbody tr.odd td {
+    background-color: #eef !important;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th, table.tablesorter tbody tr td{
+    border: 1px solid #ccc !important;
+}

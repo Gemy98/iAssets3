@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="header_landscape" columnDirection="RTL" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13eb4d9d-2cdb-4b01-a359-9823fbe6ec33">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="214"/>
+	<property name="ireport.y" value="0"/>
+	<template><![CDATA["mmp.jrtx"]]></template>
+	<parameter name="repoTitle" class="java.lang.String"/>
+	<parameter name="locationName" class="java.lang.String"/>
+	<parameter name="operatingCompany" class="java.lang.String"/>
+	<parameter name="directorate" class="java.lang.String"/>
+	<title>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement style="header_text" mode="Transparent" x="412" y="0" width="303" height="27" forecolor="#000000" backcolor="#FFFFFF" uuid="1df5145f-5296-40e4-9a8f-8d7a5eba474b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{directorate}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement x="715" y="0" width="76" height="50" uuid="d8be8e7a-d7a6-48b1-b217-a1bea7abc9a4"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="dd/MM/yyyy hh:mm a">
+				<reportElement x="1" y="27" width="352" height="23" uuid="f851052a-bd90-4f16-8e5b-8d9a71cf1a37"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="1" y="0" width="352" height="27" forecolor="#000000" backcolor="#FFFFFF" uuid="292003ff-b479-4dee-b9d5-e972010a9c47"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{repoTitle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="header_text" mode="Transparent" x="412" y="27" width="303" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="56cbd74b-1c58-459c-9177-4557bc5dc616"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{locationName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>

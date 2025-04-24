@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="عرض اجهزة المستشفي" columnDirection="RTL" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" uuid="6ae21181-3639-4c90-8142-e3b326eb266f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<template><![CDATA["mmp.jrtx"]]></template>
+	<style name="table_TD_Alternative" style="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#F8FAFF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="Table Dataset" uuid="706c6279-c931-48fc-8522-3578d58def9c">
+		<parameter name="counter" class="java.lang.String" isForPrompting="false">
+			<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+		</parameter>
+		<field name="code" class="java.lang.String"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="price" class="java.lang.Float"/>
+		<field name="category.nameLiteralKey" class="java.lang.String"/>
+		<field name="serialNo" class="java.lang.String"/>
+		<field name="hospitalDepartment.nameLiteralKey" class="java.lang.String"/>
+		<field name="manufacturerName" class="java.lang.String"/>
+		<field name="model" class="java.lang.String"/>
+		<field name="status" class="java.lang.Integer"/>
+	</subDataset>
+	<parameter name="deviceList" class="java.util.List"/>
+	<parameter name="repoTitle" class="java.lang.String"/>
+	<parameter name="locationName" class="java.lang.String"/>
+	<parameter name="operatingCompany" class="java.lang.String"/>
+	<parameter name="directorate" class="java.lang.String"/>
+	<pageHeader>
+		<band height="70">
+			<subreport>
+				<reportElement x="0" y="0" width="802" height="70" uuid="597d30eb-9849-4619-b575-26a5b7bfb01a"/>
+				<subreportParameter name="repoTitle">
+					<subreportParameterExpression><![CDATA[$P{repoTitle}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="operatingCompany">
+					<subreportParameterExpression><![CDATA[$P{operatingCompany}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="directorate">
+					<subreportParameterExpression><![CDATA[$P{directorate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="locationName">
+					<subreportParameterExpression><![CDATA[$P{locationName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["header_landscape.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="27">
+			<textField>
+				<reportElement style="page_number" x="0" y="0" width="802" height="27" uuid="e26da6b1-9f48-42fb-8c86-5ba72b448aa0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="50">
+			<componentElement>
+				<reportElement key="table" style="table_CH" x="0" y="0" width="802" height="50" uuid="8111f305-2a18-4e4a-b540-9fff931881f6"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="Table Dataset" uuid="1312ed61-3819-409f-8928-ef5080785388">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{deviceList})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="148" uuid="4a14911f-aa27-41da-8eb3-f17c0cfa91ca">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<textField>
+								<reportElement style="table_CH" x="0" y="0" width="148" height="35" uuid="4a8f20c0-f8b8-4069-9af8-e60d72d43423"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+								<textFieldExpression><![CDATA[$R{reports.locationOrDep}]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="148" height="26" uuid="2f320355-5c13-4f1c-a491-fc00d95969be"/>
+								<box leftPadding="5" rightPadding="5"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[str($F{hospitalDepartment.nameLiteralKey})]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="36" uuid="a9b35860-45a4-459f-9367-ec4fbc95e623">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<textField>
+								<reportElement style="table_CH" x="0" y="0" width="36" height="35" uuid="d22f2e0b-309a-4496-ba4c-8131904421cd"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+								<textFieldExpression><![CDATA[$R{jsp.DeviceInfo.category}]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="36" height="26" uuid="c8215fb5-5dde-49a9-b36e-cc3cc89a9301"/>
+								<box leftPadding="5" rightPadding="5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[str($F{category.nameLiteralKey})]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="108" uuid="2d9ebd81-64fd-4be7-b2f2-c9ab8c91ef4c">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<textField>
+								<reportElement style="table_CH" x="0" y="0" width="108" height="35" uuid="f53c4c0c-d1b8-4301-9048-135ba628436c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+								<textFieldExpression><![CDATA[$R{jsp.DeviceInfo.serial}]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="108" height="26" uuid="e7acdca9-3cc8-44a9-903e-76db4e914f90"/>
+								<box leftPadding="5" rightPadding="5"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{serialNo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="117" uuid="e6afc6e9-42df-4513-bda6-4ebef55f8c91">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<textField>
+								<reportElement style="table_CH" x="0" y="0" width="117" height="35" uuid="9d5bb1e7-2d7e-4e1e-b823-ea432549ec5f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+								<textFieldExpression><![CDATA[$R{jsp.DeviceInfo.model}]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="117" height="26" uuid="2de93583-5973-44ef-b0ce-6ce88a2864b1"/>
+								<box leftPadding="5" rightPadding="5"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{model}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="115" uuid="77ab5642-4982-4182-a1fd-bc2d21dbca8f">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<textField>
+								<reportElement style="table_CH" x="0" y="0" width="115" height="35" uuid="b1d94ffa-ed88-413d-ace3-c67a5727d953"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+								<textFieldExpression><![CDATA[$R{jsp.DeviceInfo.manufacturerName}]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="115" height="26" uuid="80f018f9-d3c8-442c-8ecd-b2759efea5e0"/>
+								<box leftPadding="5" rightPadding="5"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{manufacturerName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="70" uuid="c89efac6-c1c9-49e3-bad0-43643ab253ad">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<textField>
+								<reportElement style="table_CH" x="0" y="0" width="70" height="35" uuid="7fcf81bc-035d-4db2-8fa3-278f9fd5c5e5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+								<textFieldExpression><![CDATA[$R{jsp.DeviceInfo.code}]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="70" height="26" uuid="8ea84481-1113-47c7-a9c3-dcdde7a5dd4d"/>
+								<box leftPadding="5" rightPadding="5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="158" uuid="a390b203-cb25-4b23-a602-11bdb328e6f7">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<textField>
+								<reportElement style="table_CH" x="0" y="0" width="158" height="35" uuid="de04af65-1133-4e73-99ab-3c27d0f897ae"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+								<textFieldExpression><![CDATA[$R{jsp.DeviceInfo.name}]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="158" height="26" uuid="0c10e584-2988-4af6-964a-dc2b57bcc687"/>
+								<box leftPadding="5" rightPadding="5"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="49" uuid="08630a0d-4d34-4fb4-b95c-edd6b6fb1d53">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<textField>
+								<reportElement style="table_CH" x="0" y="0" width="49" height="35" uuid="4f28a701-e886-4d37-9710-9d511e8f9ba5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+								<textFieldExpression><![CDATA[$R{reports.serial}]]></textFieldExpression>
+							</textField>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="49" height="26" uuid="5499cf42-5237-416a-97b2-e715c4538375"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>

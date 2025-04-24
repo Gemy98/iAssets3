@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="الاجهزة تحت الصيانة" columnDirection="RTL" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6ae21181-3639-4c90-8142-e3b326eb266f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<template><![CDATA["mmp.jrtx"]]></template>
+	<style name="table_TD_Alternative" style="table_TD" mode="Opaque" backcolor="#FFFFFF" isBlankWhenNull="true">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#F8FAFF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="Table Dataset" uuid="706c6279-c931-48fc-8522-3578d58def9c">
+		<field name="damageDate" class="java.util.Date"/>
+		<field name="hospitalDevice.code" class="java.lang.String"/>
+		<field name="hospitalDevice.name" class="java.lang.String"/>
+		<field name="hospitalDevice.category.name" class="java.lang.String"/>
+		<field name="hospitalDevice.hospitalDepartment.name" class="java.lang.String"/>
+		<field name="jobOrderNo" class="java.lang.String"/>
+		<field name="jobOrderDate" class="java.util.Date"/>
+		<field name="openedBy.employee.name" class="java.lang.String"/>
+		<field name="actualCancelDate" class="java.util.Date"/>
+		<field name="cancelReason" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="jobOrderList" class="java.util.List"/>
+	<parameter name="repoTitle" class="java.lang.String"/>
+	<parameter name="locationName" class="java.lang.String"/>
+	<parameter name="operatingCompany" class="java.lang.String"/>
+	<parameter name="directorate" class="java.lang.String"/>
+	<pageHeader>
+		<band height="50">
+			<subreport>
+				<reportElement x="0" y="0" width="802" height="50" uuid="258d587d-97ce-4723-a374-c30fe8c6e8fb"/>
+				<subreportParameter name="repoTitle">
+					<subreportParameterExpression><![CDATA[$P{repoTitle}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="directorate">
+					<subreportParameterExpression><![CDATA[$P{directorate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="operatingCompany">
+					<subreportParameterExpression><![CDATA[$P{operatingCompany}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="locationName">
+					<subreportParameterExpression><![CDATA[$P{locationName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["header_landscape.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="27">
+			<textField>
+				<reportElement style="page_number" x="0" y="0" width="802" height="27" uuid="f549ad03-cfd7-4ef6-8bbb-684be62ac52e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="50">
+			<componentElement>
+				<reportElement key="table" x="0" y="0" width="802" height="50" uuid="8111f305-2a18-4e4a-b540-9fff931881f6"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="Table Dataset" uuid="6922832d-639d-4004-8d0e-9ab1922a6a61">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{jobOrderList})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="76" uuid="77ab5642-4982-4182-a1fd-bc2d21dbca8f">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH" mode="Transparent" x="0" y="0" width="76" height="35" forecolor="#000000" backcolor="#FFFFFF" uuid="4676b790-ab28-4773-b261-69f329bd199f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[الموظف المسؤول]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="76" height="26" uuid="5b6dded0-1153-4148-a01a-3a0b681deaf9"/>
+								<box leftPadding="5" rightPadding="5"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{openedBy.employee.name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="91" uuid="018dacd1-c467-45ee-8242-40864d76f8aa">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH" x="0" y="0" width="91" height="35" uuid="873f5b43-33af-4973-bfaa-a192566d401b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[أسباب حذفه]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="91" height="26" uuid="ace0002e-0fcd-4198-b24d-ae9231caaa1c"/>
+								<box leftPadding="5" rightPadding="5"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{cancelReason}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="75" uuid="018dacd1-c467-45ee-8242-40864d76f8aa">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH" x="0" y="0" width="75" height="35" uuid="873f5b43-33af-4973-bfaa-a192566d401b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[تاريخ حذفه]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="75" height="26" uuid="ace0002e-0fcd-4198-b24d-ae9231caaa1c"/>
+								<box leftPadding="5" rightPadding="5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{actualCancelDate}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="88" uuid="4a14911f-aa27-41da-8eb3-f17c0cfa91ca">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH" x="0" y="0" width="88" height="35" uuid="0af570cb-6a32-430f-943f-80d597872a46"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[القسم]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="88" height="26" uuid="98374ac6-6908-4863-aeb1-6fe3850eaf81"/>
+								<box leftPadding="5" rightPadding="5"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{hospitalDevice.hospitalDepartment.name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="40" uuid="a9b35860-45a4-459f-9367-ec4fbc95e623">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH" x="0" y="0" width="40" height="35" uuid="645fea0b-f133-479d-8245-c27a5ff29441"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[الفئة]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="40" height="26" uuid="09191179-36bb-4d17-8964-caca441d2075"/>
+								<box leftPadding="5" rightPadding="5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{hospitalDevice.category.name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="c89efac6-c1c9-49e3-bad0-43643ab253ad">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH" x="0" y="0" width="60" height="35" uuid="c0141b7e-6fb3-467a-9ba1-e36499d392a8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[كود الجهاز]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="60" height="26" uuid="07b2049e-e49a-43e4-8bca-d8f919cf22f7"/>
+								<box leftPadding="5" rightPadding="5"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{hospitalDevice.code}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="100" uuid="a390b203-cb25-4b23-a602-11bdb328e6f7">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH" x="0" y="0" width="100" height="35" uuid="e285db95-124d-4812-b18a-f5fba687e6e5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[اسم الجهاز]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="100" height="26" uuid="dd593c7a-a345-46e1-a146-f90e7d35ed12"/>
+								<box leftPadding="5" rightPadding="5"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{hospitalDevice.name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="75" uuid="c23a08c3-145d-4ea4-bb89-a68bb6db7424">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH" x="0" y="0" width="75" height="35" uuid="c3ba886e-cf3e-4260-92aa-fdab6765853d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[تاريخ  العطل]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="75" height="26" uuid="d4c133a2-92cd-405d-85e4-214c4fbfdf03"/>
+								<box leftPadding="5" rightPadding="5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{damageDate}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="75" uuid="c23a08c3-145d-4ea4-bb89-a68bb6db7424">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH" x="0" y="0" width="75" height="35" uuid="c3ba886e-cf3e-4260-92aa-fdab6765853d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[تاريخ فتحه]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="75" height="26" uuid="d4c133a2-92cd-405d-85e4-214c4fbfdf03"/>
+								<box leftPadding="5" rightPadding="5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{jobOrderDate}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="92" uuid="9acbf116-2ec9-4621-af40-c45fd7b0bd77">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH" mode="Transparent" x="0" y="0" width="92" height="35" forecolor="#000000" backcolor="#FFFFFF" uuid="d3b88df7-0d79-435a-8433-d2d7cfc335c1"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[رقم امر العمل]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="92" height="26" uuid="2bcd8034-b64f-4504-b7d8-8acf94a7dc80"/>
+								<box leftPadding="5" rightPadding="5"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{jobOrderNo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="08630a0d-4d34-4fb4-b95c-edd6b6fb1d53">
+						<jr:columnHeader style="table_CH" height="35" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH" x="0" y="0" width="30" height="35" uuid="c382f221-7951-449c-93c8-9344957892f2"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[م]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="26" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="30" height="26" uuid="cdeb679f-0b06-4917-946f-205fd30eb7b1"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+.pure-skin-mine .pure-form  label.upload_label {
+	display: inline-block;
+	background: #888;
+	color: #fff ;
+	text-align: center;
+	border-radius: 3px;
+	width: 100px;
+	height: 35px;
+	line-height: 35px;
+	font-size: 1em;
+	font-weight:bold;
+    margin: 0;
+
+}
+
+.pure-skin-mine .pure-form input[type='file'].file_input {
+	width: 1px;
+	height: 1px;
+	opacity:0;
+    filter: alpha(opacity=0); 
+}

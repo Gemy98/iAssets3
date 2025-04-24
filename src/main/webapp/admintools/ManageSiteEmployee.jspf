@@ -1,0 +1,95 @@
+<%@ page contentType="text/html;charset=UTF-8" import="com.iassets.common.util.*,com.iassets.common.entity.CommonEmployee"%>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setBundle basename="i18n.jsp_literals" />
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%
+	CommonEmployee currentEmployee = (CommonEmployee) request.getAttribute("currentEmployee");
+    String langCode = WebUtil.getSessionLanguage(request);
+%>
+<c:if test="${enableAddButton != null || (currentEmployee != null && (enableUpdateButton != null || enableDeleteButton != null)) }">
+	<tr>
+        <td class="side_label_middle">  <fmt:message key="jsp.ManageSiteEmployee.processType" />:</td>
+		<td>
+		 <c:if test="${enableAddButton != null}">
+			<input type="radio" name="processType" onclick="resetForm()" value="add" checked="checked" required /><fmt:message key="jsp.ManageSiteEmployee.add" />
+		 </c:if>
+		 
+   <c:if test="${currentEmployee != null}"> 
+         <c:if test="${enableUpdateButton != null}">
+			<input type="radio" name="processType" onclick="setEmployeeInfo()" value="update" required /> <fmt:message key="jsp.ManageSiteEmployee.update" />
+			
+			
+		 </c:if>
+		 
+		 <c:if test="${enableDeleteButton != null}">
+			<input type="radio" name="processType" onclick="hideEmpForm()" value="delete" required /> <fmt:message key="jsp.ManageSiteEmployee.delete" />
+		 </c:if>
+   </c:if>
+   
+		</td>
+	</tr>
+</c:if>
+<tbody id="emp_form_container">
+	<tr>
+		<td class="side_label_middle"> <fmt:message key="jsp.ManageSiteEmployee.nameAr" /> :</td>
+		<td><input type="text" name="nameAr" size="40" id="nameAr" required data-rule-arName="true"	data-msg-arName='<fmt:message key="jsp.ManageSiteEmployee.nameAr.msg" />'></td>
+	</tr>
+	<tr>
+		<td class="side_label_middle"> <fmt:message key="jsp.ManageSiteEmployee.nameEn" /> :</td>
+		<td><input type="text" name="nameEn" size="40" id="nameEn" required data-rule-enName="true"	data-msg-enName='<fmt:message key="jsp.ManageSiteEmployee.nameEn.msg" />'></td>
+	</tr>
+	<tr>
+		<td class="side_label_middle"> <fmt:message key="jsp.ManageSiteEmployee.mobile" />  :</td>
+		<td><input type="text" id="mobile" name="mobile" maxlength="10" data-rule-minlength="10" data-msg-minlength='<fmt:message key="jsp.ManageSiteEmployee.mobile.msg1" />' data-rule-range="0500000000,0599999999" data-msg-range='<fmt:message key="jsp.ManageSiteEmployee.mobile.msg2" />'></td>
+	</tr>
+</tbody>
+	<tr>
+		<td colspan="2"><input type="submit" name="button" id="button" value="<fmt:message key='jsp.ManageSiteEmployee.submitBtn' />"><%=CommonHtmlUtil.getResetButtonHTML(langCode)%></td>
+	</tr>
+
+ <script>
+ 
+/*  
+   $(function(){
+  	 	$('table.layout_grid tr').first().before('<tr><td colspan="2"><h1 class="page_title">${pageTitle}</h1></td></tr>');
+  	 	$('form:first').attr("action","${processServlet}");
+    } */
+    
+	function resetForm() {
+    	$("#emp_form_container").show();
+		$("#employeeId").remove();
+		// setTextFieldValue("employeeId", null);
+		/*
+		setTextFieldValue("nameAr", "");
+		setTextFieldValue("nameEn", "");
+		setTextFieldValue("mobile", "");
+		*/
+		$("form:first").trigger("reset");
+	}
+	
+  <c:if test="${currentEmployee != null}">
+    function appendEmpId(){
+		$("#employeeId").remove(); // to avoid duplication of the sameelement
+		appendIdElement("employeeId", '<%= currentEmployee.getId() %>');
+    }
+    
+	function setEmployeeInfo() {
+		    $("#emp_form_container").show();
+		    appendEmpId();
+			// setTextFieldValue("employeeId", '${currentEmployee.getId()}');
+			setTextFieldValue("nameAr", "<%= currentEmployee.getName(Enums.SUPPORTED_LANGUAGES.ARABIC.getLanguageCode()) %>");
+			setTextFieldValue("nameEn", "<%= currentEmployee.getName(Enums.SUPPORTED_LANGUAGES.ENGLISH.getLanguageCode()) %>");
+			setTextFieldValue("mobile", "<%= currentEmployee.getMobile() %>");
+		
+	}
+	<c:if test="${enableDeleteButton != null}">
+		function hideEmpForm(){
+			$("#emp_form_container").hide();
+			appendEmpId();
+		}
+	</c:if>
+  </c:if>
+ </script>

@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="تقرير كفاءة الصيانة بالمديرية" columnDirection="RTL" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6ae21181-3639-4c90-8142-e3b326eb266f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<template><![CDATA["mmp.jrtx"]]></template>
+	<style name="table_TD_Alternative" style="table_TD" mode="Opaque" backcolor="#FFFFFF" isBlankWhenNull="true" fontSize="10">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#F8FAFF"/>
+		</conditionalStyle>
+	</style>
+	<style name="tbl_CH" mode="Opaque" backcolor="#E6ECFF" hAlign="Center" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" fontSize="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset" uuid="706c6279-c931-48fc-8522-3578d58def9c">
+		<parameter name="tblMonthName" class="java.lang.String"/>
+		<parameter name="tblYear" class="java.lang.Integer"/>
+		<field name="measureValue" class="java.lang.Integer"/>
+		<field name="totalValue" class="java.lang.Integer"/>
+		<field name="siteName" class="java.lang.String"/>
+		<field name="indicatorRatio" class="java.lang.Float"/>
+		<field name="indicatorPercentageStr" class="java.lang.String"/>
+		<field name="complementaryValue" class="java.lang.Integer"/>
+	</subDataset>
+	<parameter name="repoTitle" class="java.lang.String"/>
+	<parameter name="directorate" class="java.lang.String"/>
+	<parameter name="dashboardGroups" class="com.iassets.biomedical.dto.report.DashboardPerformance"/>
+	<parameter name="monthName" class="java.lang.String"/>
+	<parameter name="year" class="java.lang.Integer"/>
+	<pageHeader>
+		<band height="70">
+			<image>
+				<reportElement x="195" y="0" width="113" height="70" uuid="af03a4a9-37cc-4052-87b1-153e5748f980"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement style="header_text" mode="Transparent" x="308" y="11" width="247" height="27" forecolor="#000000" backcolor="#FFFFFF" uuid="20669ea7-8832-47c6-8335-7d9468cfcebb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{directorate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="header_text" mode="Transparent" x="308" y="38" width="247" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="f9762bbe-f1ec-45f9-825c-385420df197d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Times New Roman" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{repoTitle}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="50">
+			<componentElement>
+				<reportElement key="table" x="0" y="0" width="555" height="50" uuid="078fd4d1-498d-43c4-8b8b-01830de26171"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="Table Dataset" uuid="44028ea1-975b-4404-9763-2a84f78208f3">
+						<datasetParameter name="tblMonthName">
+							<datasetParameterExpression><![CDATA[$P{monthName}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="tblYear">
+							<datasetParameterExpression><![CDATA[$P{year}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{dashboardGroups}.getGroupOne())]]></dataSourceExpression>
+					</datasetRun>
+					<jr:columnGroup width="555" uuid="a4feb32e-35c1-467b-8b93-44b0483dd942">
+						<jr:tableHeader height="20" rowSpan="1">
+							<textField>
+								<reportElement style="table_CH_normal" mode="Transparent" x="0" y="0" width="555" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="0153f0d2-7c6e-449a-99a1-7fb0857544c0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$R{dashboard.group1.header}+"  "+$P{tblMonthName}+"-"+$P{tblYear}]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:column width="297" uuid="c27c824c-b7cd-4a5f-aea7-6810badc62c5">
+							<jr:columnHeader style="table_CH" height="20" rowSpan="1">
+								<textField>
+									<reportElement style="tbl_CH" mode="Transparent" x="0" y="0" width="297" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="3052b7ae-1b0e-4831-833b-cb653bbbb409"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font size="12"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$R{dashboard.hospital}]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:detailCell height="15" rowSpan="1">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="297" height="15" uuid="e22f5f0b-68f6-464f-8e82-fe3aedea94e4"/>
+									<box leftPadding="5" rightPadding="5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[str($F{siteName})]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="86" uuid="e7301e73-fc63-4607-a9cf-48d264d96c3a">
+							<jr:columnHeader style="table_CH" height="20" rowSpan="1">
+								<textField>
+									<reportElement style="tbl_CH" x="0" y="0" width="86" height="20" uuid="79a0e230-dabb-48f4-8744-39c994d1017b"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font size="12"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$R{dashboard.group1.total}]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:detailCell height="15" rowSpan="1">
+								<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="86" height="15" uuid="7c3acf57-29ec-4b5d-8407-3c96b3234f49"/>
+									<box leftPadding="5" rightPadding="5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{totalValue}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="86" uuid="837ea3b2-77d3-4e2c-a184-39f18e000186">
+							<jr:columnHeader style="table_CH" height="20" rowSpan="1">
+								<textField>
+									<reportElement style="tbl_CH" x="0" y="0" width="86" height="20" uuid="cf657d80-b871-45b4-b5c2-1036c765474f"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font size="12"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$R{dashboard.group1.measure}]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:detailCell height="15" rowSpan="1">
+								<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="86" height="15" uuid="d350d92e-3e1c-48f2-994b-d6f7871e2029"/>
+									<box leftPadding="5" rightPadding="5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{measureValue}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="86" uuid="1c1ec8aa-fc97-483a-a1b1-8450b7d16b02">
+							<jr:columnHeader style="table_CH" height="20" rowSpan="1">
+								<textField>
+									<reportElement style="tbl_CH" x="0" y="0" width="86" height="20" uuid="75edd686-f4d0-4efc-92c6-f277c038796a"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+										<font size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$R{dashboard.group1.percentage}]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:detailCell height="15" rowSpan="1">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="86" height="15" uuid="b31112ed-eb31-440a-9196-3b33d21eb38c"/>
+									<box leftPadding="5" rightPadding="5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{indicatorPercentageStr}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="50">
+			<componentElement>
+				<reportElement key="table" x="0" y="0" width="555" height="50" uuid="de13b0aa-06e7-4f0f-8fe2-f6c25546bca6"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="Table Dataset" uuid="fc107e0b-b0cc-4c94-8b67-e7d14ff03599">
+						<datasetParameter name="tblMonthName">
+							<datasetParameterExpression><![CDATA[$P{monthName}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="tblYear">
+							<datasetParameterExpression><![CDATA[$P{year}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{dashboardGroups}.getGroupTwo())]]></dataSourceExpression>
+					</datasetRun>
+					<jr:columnGroup width="555" uuid="747f8dff-ca21-4ace-8625-fa2203707e12">
+						<jr:tableHeader height="20" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement style="table_CH_normal" mode="Transparent" x="0" y="0" width="555" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="d89ab506-8dba-4105-be07-9e674700d1f2"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$R{dashboard.group2.header}+"  "+$P{tblMonthName}+"-"+$P{tblYear}]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:column width="297" uuid="1146f369-d3c4-46d8-821c-501cfb36ce5e">
+							<jr:columnHeader style="table_CH" height="20" rowSpan="1">
+								<textField pattern="" isBlankWhenNull="true">
+									<reportElement style="tbl_CH" mode="Transparent" x="0" y="0" width="297" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="17b4d362-ffd4-4ce9-9680-6851e5579676"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font size="12"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$R{dashboard.hospital}]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:detailCell height="15" rowSpan="1">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="297" height="15" uuid="16fac314-ec32-4407-8c2b-6cde20f3ca01"/>
+									<box leftPadding="5" rightPadding="5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[str($F{siteName})]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="86" uuid="fa116982-a68f-4846-ba06-b3c10cb6ad4e">
+							<jr:columnHeader style="table_CH" height="20" rowSpan="1">
+								<textField pattern="" isBlankWhenNull="true">
+									<reportElement style="tbl_CH" mode="Transparent" x="0" y="0" width="86" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="3c82f2e8-eb85-46f1-9104-0ad7f0ea552c"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font size="12"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$R{dashboard.group2.total}]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:detailCell height="15" rowSpan="1">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="86" height="15" uuid="ebe1dbee-9c48-4133-af9d-6c1e9f7a117f"/>
+									<box leftPadding="5" rightPadding="5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{totalValue}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="86" uuid="f55ad8c5-a3a6-4380-ac2e-9831310d1e63">
+							<jr:columnHeader style="table_CH" height="20" rowSpan="1">
+								<textField pattern="" isBlankWhenNull="true">
+									<reportElement style="tbl_CH" mode="Transparent" x="0" y="0" width="86" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="9cef9d82-7288-4dcb-9681-e5bb1205faae"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font size="12"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$R{dashboard.group2.measure}]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:detailCell height="15" rowSpan="1">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="86" height="15" uuid="b6b461ff-fa4d-4829-ae13-7cf8e98b11d3"/>
+									<box leftPadding="5" rightPadding="5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{measureValue}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="86" uuid="75e6c9cf-cc86-41e0-835e-7ed37b91fcd3">
+							<jr:columnHeader style="table_CH" height="20" rowSpan="1">
+								<textField pattern="" isBlankWhenNull="true">
+									<reportElement style="tbl_CH" mode="Transparent" x="0" y="0" width="86" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="f5fbbfee-0181-4076-8c62-22496ba402a6"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font size="12"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$R{dashboard.group2.percentage}]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:detailCell height="15" rowSpan="1">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="86" height="15" uuid="4b71b703-7328-4ee6-b87b-ae0ce8e95254"/>
+									<box leftPadding="5" rightPadding="5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{indicatorPercentageStr}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="50">
+			<componentElement>
+				<reportElement key="table" x="0" y="0" width="555" height="50" uuid="8187c3d1-302e-4eb8-8b1c-3d635a905bbb"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="Table Dataset" uuid="1b8543f3-f4ec-45e4-b7b1-a568ef1a8caf">
+						<datasetParameter name="tblMonthName">
+							<datasetParameterExpression><![CDATA[$P{monthName}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="tblYear">
+							<datasetParameterExpression><![CDATA[$P{year}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{dashboardGroups}.getGroupThree())]]></dataSourceExpression>
+					</datasetRun>
+					<jr:columnGroup width="555" uuid="3be3221f-26b3-4a19-b045-18322e1753d9">
+						<jr:tableHeader height="20" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement style="table_CH_normal" mode="Transparent" x="0" y="0" width="555" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="dc863d99-b7f3-423b-880a-96e4f9485373"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$R{dashboard.group3.header}+"  "+$P{tblMonthName}+"-"+$P{tblYear}]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:column width="297" uuid="99332a43-4a9d-43ba-8055-d6316ff6ff68">
+							<jr:columnHeader style="table_CH" height="20" rowSpan="1">
+								<textField pattern="" isBlankWhenNull="true">
+									<reportElement style="tbl_CH" mode="Transparent" x="0" y="0" width="297" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="dc982305-6f41-41e5-b35d-e6ce824e0f29"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font size="12"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$R{dashboard.hospital}]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:detailCell height="15" rowSpan="1">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="297" height="15" uuid="a0facd35-d408-422a-b02a-41e9538a23a6"/>
+									<box leftPadding="5" rightPadding="5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[str($F{siteName})]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="86" uuid="37ffafd7-e835-4446-9714-41b346e7eb2f">
+							<jr:columnHeader style="table_CH" height="20" rowSpan="1">
+								<textField pattern="" isBlankWhenNull="true">
+									<reportElement style="tbl_CH" mode="Transparent" x="0" y="0" width="86" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="196727d2-271b-469a-955a-780d4d525f98"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font size="12"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$R{dashboard.group3.total}]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:detailCell height="15" rowSpan="1">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="86" height="15" uuid="842e9832-65bf-4050-ae42-3f863e0676fd"/>
+									<box leftPadding="5" rightPadding="5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{totalValue}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="86" uuid="2a2c1e33-ce60-43b8-bceb-ab108e137fec">
+							<jr:columnHeader style="table_CH" height="20" rowSpan="1">
+								<textField pattern="" isBlankWhenNull="true">
+									<reportElement style="tbl_CH" mode="Transparent" x="0" y="0" width="86" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="07546eff-2b4f-4b7f-b7ea-5cb361cbee41"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font size="12"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$R{dashboard.group3.measure}]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:detailCell height="15" rowSpan="1">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="86" height="15" uuid="e6b1598d-55ba-4ac9-87b3-74edba8d84db"/>
+									<box leftPadding="5" rightPadding="5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{complementaryValue}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="86" uuid="67fc98cd-a448-46b5-b5f9-f8086ff7fecd">
+							<jr:columnHeader style="table_CH" height="20" rowSpan="1">
+								<textField pattern="" isBlankWhenNull="true">
+									<reportElement style="tbl_CH" mode="Transparent" x="0" y="0" width="86" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="1618cf96-db8e-415f-acbf-c318700b2529"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font size="12"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$R{dashboard.group3.percentage}]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:detailCell height="15" rowSpan="1">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="86" height="15" uuid="1b6eca6e-fa5c-4b7d-bee1-8a168f68964c"/>
+									<box leftPadding="5" rightPadding="5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{indicatorPercentageStr}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="50">
+			<componentElement>
+				<reportElement key="table" x="0" y="0" width="555" height="50" uuid="a99ad7e4-bc19-4224-9c63-7931ab974e92"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="Table Dataset" uuid="29b63192-c822-4a65-910b-f743df899d57">
+						<datasetParameter name="tblMonthName">
+							<datasetParameterExpression><![CDATA[$P{monthName}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="tblYear">
+							<datasetParameterExpression><![CDATA[$P{year}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{dashboardGroups}.getGroupFour())]]></dataSourceExpression>
+					</datasetRun>
+					<jr:columnGroup width="555" uuid="4f380c93-ad5b-4a84-9c0d-fc517f59be0d">
+						<jr:tableHeader height="20" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement style="table_CH_normal" mode="Transparent" x="0" y="0" width="555" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="9dc5a8e3-f8e5-485d-bc15-5434b26a05e0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$R{dashboard.group4.header}+"  "+$P{tblMonthName}+"-"+$P{tblYear}]]></textFieldExpression>
+							</textField>
+						</jr:tableHeader>
+						<jr:column width="297" uuid="357d9445-c651-4e2a-bc50-38aeb4a330a3">
+							<jr:columnHeader style="table_CH" height="20" rowSpan="1">
+								<textField pattern="" isBlankWhenNull="true">
+									<reportElement style="tbl_CH" mode="Transparent" x="0" y="0" width="297" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ca40d075-369a-4d1f-8244-519b97ea1bf1"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font size="12"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$R{dashboard.hospital}]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:detailCell height="15" rowSpan="1">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="297" height="15" uuid="9c9ab721-ce3f-4c69-907f-1eb52737bca7"/>
+									<box leftPadding="5" rightPadding="5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[str($F{siteName})]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="86" uuid="734a05b6-41f1-4b0c-87e7-15209d8ac2ec">
+							<jr:columnHeader style="table_CH" height="20" rowSpan="1">
+								<textField pattern="" isBlankWhenNull="true">
+									<reportElement style="tbl_CH" mode="Transparent" x="0" y="0" width="86" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ac18673c-67c9-401b-8133-5519da5e0a50"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font size="12"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$R{dashboard.group4.total}]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:detailCell height="15" rowSpan="1">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="86" height="15" uuid="ff1a27c8-380f-487a-96d9-1911f0782944"/>
+									<box leftPadding="5" rightPadding="5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{totalValue}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="86" uuid="7fa69f3d-5235-4077-98fe-3aa076b6075b">
+							<jr:columnHeader style="table_CH" height="20" rowSpan="1">
+								<textField pattern="" isBlankWhenNull="true">
+									<reportElement style="tbl_CH" mode="Transparent" x="0" y="0" width="86" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="65e27f5f-3c4b-4414-99d9-76238b3325c0"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font size="12"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$R{dashboard.group4.measure}]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:detailCell height="15" rowSpan="1">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="86" height="15" uuid="45566956-0d4d-4bad-a6de-3889353951ca"/>
+									<box leftPadding="5" rightPadding="5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{complementaryValue}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="86" uuid="93304c87-2137-407e-9600-ad2c9a507780">
+							<jr:columnHeader style="table_CH" height="20" rowSpan="1">
+								<textField pattern="" isBlankWhenNull="true">
+									<reportElement style="tbl_CH" mode="Transparent" x="0" y="0" width="86" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="732b381b-9dde-445a-8916-0e21bd01ac21"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+										<font size="12"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$R{dashboard.group4.percentage}]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:detailCell height="15" rowSpan="1">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="86" height="15" uuid="28b3cb3f-1b2c-4a38-962b-fb16bbb29cfa"/>
+									<box leftPadding="5" rightPadding="5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{indicatorPercentageStr}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="27">
+			<textField>
+				<reportElement style="page_number" x="0" y="0" width="555" height="27" uuid="f549ad03-cfd7-4ef6-8bbb-684be62ac52e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

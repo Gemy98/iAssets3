@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+#dhtmlgoodies_slidedown_menu{width:300px;margin:0 auto;font-family: Verdana, Arial, Helvetica, sans-serif;}
+#dhtmlgoodies_slidedown_menu div {margin:0;padding:0;border:none;}
+#dhtmlgoodies_slidedown_menu ul {margin:0;padding:0;position:relative;}
+#dhtmlgoodies_slidedown_menu li {list-style-type:none;position:relative;}
+#dhtmlgoodies_slidedown_menu a{outline:none;}
+/* 	Layout CSS */
+#dhtmlgoodies_slidedown_menu > ul > li {background:url(../image/sub_menu.png) no-repeat top;padding-left:0;font-size:12px}
+#dhtmlgoodies_slidedown_menu > ul > li:hover {}
+#dhtmlgoodies_slidedown_menu > ul > li > a {color:#374E6E;background:none;margin-left:5px}
+#dhtmlgoodies_slidedown_menu > ul > li > a:first-child {padding-left:15px;}
+#dhtmlgoodies_slidedown_menu > ul > li > a:hover {background:url(../image/menu_icon_en.gif) no-repeat left;}
+#dhtmlgoodies_slidedown_menu > ul > li ul{background:#FFF;margin:0 3px;}
+/*#dhtmlgoodies_slidedown_menu > ul > li li:first-child {border:none}*/
+#dhtmlgoodies_slidedown_menu > ul > li li {border-bottom:1px dotted #0E3F8F;/*background:url(../image/menu_featherhover.jpg) repeat-x;*/}
+#dhtmlgoodies_slidedown_menu > ul > li li:hover {border-bottom:1px dotted #0086CA;;/*background:url(../image/menu_featherhover.jpg) repeat-x;*/}
+#dhtmlgoodies_slidedown_menu > ul > li li a {color:#0E3F8F;background:url(../image/lnk.png) no-repeat left center;margin-left:15px}
+#dhtmlgoodies_slidedown_menu > ul > li li a:hover {color:#0086CA;;background:url(../image/lnk_active.png) no-repeat left center}
+/* All A tags - i.e menu items. */
+#dhtmlgoodies_slidedown_menu a {padding-left:5px;text-decoration:none;display:block;clear:both;width:80%;padding-left:2px;height:32px;line-height:32px;}
+/* Active menu item */
+#dhtmlgoodies_slidedown_menu .dhtmlgoodies_activeItem {border:none;font-weight:bold;background:url(../image/menu_icon_after.gif) no-repeat left center;margin-left:7px;}
+/*#dhtmlgoodies_slidedown_menu .dhtmlgoodies_activeItem + div{background:none}*/
+/* A tags */
+/* Main menu items */
+#dhtmlgoodies_slidedown_menu .slMenuItem_depth1 {margin-bottom:1px;font-weight:bold;}
+/* Sub menu items */
+#dhtmlgoodies_slidedown_menu .slMenuItem_depth2 {font: "Courier New", Courier, monospace;font-size:11px;font-weight:600;padding-left:15px;}
+
+
+/* Sub menu items 
+#dhtmlgoodies_slidedown_menu .slMenuItem_depth3 {	
+	margin-top:1px;
+	font-style:italic;
+	color:blue;
+}
+#dhtmlgoodies_slidedown_menu .slMenuItem_depth4 {	
+	margin-top:1px;
+	color:red;
+}
+#dhtmlgoodies_slidedown_menu .slMenuItem_depth5 {	
+	margin-top:1px;
+}
+*/
+/* UL tags, i.e group of menu utems.
+	It's important to add style to the UL if you're specifying margins. If not, assign the style directly
+	to the parent DIV, i.e.
+
+	#dhtmlgoodies_slidedown_menu .slideMenuDiv1
+
+	instead of
+
+    #dhtmlgoodies_slidedown_menu .slideMenuDiv1 ul
+*/
+
+/*#dhtmlgoodies_slidedown_menu .slideMenuDiv1 ul {
+	padding:1px;
+}
+#dhtmlgoodies_slidedown_menu .slideMenuDiv2 ul {
+	margin-left:5px;
+	padding:1px;
+}
+#dhtmlgoodies_slidedown_menu .slideMenuDiv3 ul {
+	margin-left:10px;
+	padding:1px;
+}
+#dhtmlgoodies_slidedown_menu .slMenuItem_depth4 ul {
+	margin-left:15px;
+	padding:1px;
+}*/

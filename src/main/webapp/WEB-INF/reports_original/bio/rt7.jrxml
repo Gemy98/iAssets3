@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="جدول الزيارات الوقائية" columnDirection="RTL" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6ae21181-3639-4c90-8142-e3b326eb266f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<template><![CDATA["mmp.jrtx"]]></template>
+	<style name="table_TD_Alternative" style="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#F8FAFF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="Table Dataset" uuid="706c6279-c931-48fc-8522-3578d58def9c">
+		<field name="deviceName" class="java.lang.String"/>
+		<field name="subcontractor" class="java.lang.String"/>
+		<field name="contractVisitsNo" class="java.lang.Integer"/>
+		<field name="pmVisitsMonths" class="java.lang.String"/>
+		<field name="deviceNoInSite" class="java.lang.Integer"/>
+		<field name="category" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="deviceList" class="java.util.List"/>
+	<parameter name="repoTitle" class="java.lang.String"/>
+	<parameter name="locationName" class="java.lang.String"/>
+	<parameter name="operatingCompany" class="java.lang.String"/>
+	<parameter name="directorate" class="java.lang.String"/>
+	<pageHeader>
+		<band height="50">
+			<subreport>
+				<reportElement x="0" y="0" width="802" height="50" uuid="cdb8fb9f-65ab-42e0-aa5f-101fbbbd7ffa"/>
+				<subreportParameter name="repoTitle">
+					<subreportParameterExpression><![CDATA[$P{repoTitle}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="operatingCompany">
+					<subreportParameterExpression><![CDATA[$P{operatingCompany}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="directorate">
+					<subreportParameterExpression><![CDATA[$P{directorate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="locationName">
+					<subreportParameterExpression><![CDATA[$P{locationName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["header_landscape.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="27">
+			<textField>
+				<reportElement style="page_number" x="0" y="0" width="802" height="27" uuid="7d44020b-915e-46d3-a209-3493699d7f6e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="50">
+			<componentElement>
+				<reportElement key="table" x="0" y="0" width="802" height="50" uuid="8111f305-2a18-4e4a-b540-9fff931881f6"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="Table Dataset" uuid="61f822ee-945f-47c8-bf97-fc0f870fe576">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{deviceList})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="34" uuid="ec9209a0-3994-44d9-a21a-9afed3b6095d">
+						<jr:columnHeader style="table_CH" height="50" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH_small" x="0" y="0" width="34" height="50" uuid="11f44010-1a64-4897-aedc-9852f1689232"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Times New Roman" size="9" isBold="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[ديسمبر
+12]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="34" height="31" uuid="e198fd01-290f-493e-b060-8a2416f1cda5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="18" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[($F{pmVisitsMonths}.contains("$12$"))?"X":""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="34" uuid="5a438c74-e02f-4542-85e6-3a9f8954b8ec">
+						<jr:columnHeader style="table_CH" height="50" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH_small" x="0" y="0" width="34" height="50" uuid="924c68c7-0e6f-4da9-a09f-148e3a51a725"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Times New Roman" size="9" isBold="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[نوفمبر
+11]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="34" height="31" uuid="e959fb6c-bac5-4341-97d7-57e105e4ce94"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="18" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[($F{pmVisitsMonths}.contains("$11$"))?"X":""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="35" uuid="a1106712-3ff3-4443-8295-9cdc0132875c">
+						<jr:columnHeader style="table_CH" height="50" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH_small" x="0" y="0" width="35" height="50" uuid="580701da-aed0-4d80-9ed0-93a8dde8a4c9"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Times New Roman" size="9" isBold="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[اكتوبر
+10]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="35" height="31" uuid="24879d0e-9072-4e21-8503-d44cd07f2bd9"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="18" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[($F{pmVisitsMonths}.contains("$10$"))?"X":""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="37" uuid="d916d47f-e2c0-454e-8932-f1da14d2917f">
+						<jr:columnHeader style="table_CH" height="50" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH_small" x="0" y="0" width="37" height="50" uuid="fc61b71e-4f89-4000-92ab-6f93f9b02c2f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Times New Roman" size="9" isBold="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[سبتمبر
+9]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="37" height="31" uuid="39127c56-1aa1-4455-95c7-858e5d1b4dfc"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="18" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[($F{pmVisitsMonths}.contains("$9$"))?"X":""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="46" uuid="4868741f-86b0-4ced-a511-be6ff9e37b50">
+						<jr:columnHeader style="table_CH" height="50" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH_small" x="0" y="0" width="46" height="50" uuid="1269f965-fc21-4273-9480-ef8f9b57bc02"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Times New Roman" size="9" isBold="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[اغسطس
+8]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="46" height="31" uuid="21a25094-5c6d-44b2-9ebd-b54d8a8684af"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="18" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[($F{pmVisitsMonths}.contains("$8$"))?"X":""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="35" uuid="75101b27-41e3-4fe0-88f2-c143ec58a4cf">
+						<jr:columnHeader style="table_CH" height="50" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH_small" x="0" y="0" width="35" height="50" uuid="ae81481e-e3c3-4f46-b964-549864da7a13"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Times New Roman" size="9" isBold="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[يوليو
+7]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="35" height="31" uuid="77b40d50-6ff1-4e86-b6fd-f7c1e4470d8a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="18" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[($F{pmVisitsMonths}.contains("$7$"))?"X":""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="33" uuid="a96b0e12-2cf3-45e2-a03c-b3db9ef50739">
+						<jr:columnHeader style="table_CH" height="50" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH_small" x="0" y="0" width="33" height="50" uuid="19247056-205f-403a-a21b-4660994109e9"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="9" isBold="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+								</textElement>
+								<text><![CDATA[يونيه
+6]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="33" height="31" uuid="b94658d0-937e-4eaa-9790-ff2ec1cb284c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="18" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[($F{pmVisitsMonths}.contains("$6$"))?"X":""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="35" uuid="2d9ebd81-64fd-4be7-b2f2-c9ab8c91ef4c">
+						<jr:columnHeader style="table_CH" height="50" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH_small" x="0" y="0" width="35" height="50" uuid="e510a25f-d900-4f08-a037-79f896e25f58"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="9" isBold="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+								</textElement>
+								<text><![CDATA[مايو
+5]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="35" height="31" uuid="1a6a90dd-b82c-4ac0-91a8-d35ac7aa69fb"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="18" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[($F{pmVisitsMonths}.contains("$5$"))?"X":""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="34" uuid="e6afc6e9-42df-4513-bda6-4ebef55f8c91">
+						<jr:columnHeader style="table_CH" height="50" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH_small" x="0" y="0" width="34" height="50" uuid="ca72e516-e582-41da-956e-aa8e3b54e472"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="9" isBold="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+								</textElement>
+								<text><![CDATA[ابريل
+4]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="34" height="31" uuid="81f88d7f-124b-4869-9415-3ef9eed472a7"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="18" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[($F{pmVisitsMonths}.contains("$4$"))?"X":""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="35" uuid="77ab5642-4982-4182-a1fd-bc2d21dbca8f">
+						<jr:columnHeader style="table_CH" height="50" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH_small" x="0" y="0" width="35" height="50" uuid="0af570cb-6a32-430f-943f-80d597872a46"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="9" isBold="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+								</textElement>
+								<text><![CDATA[مارس
+3]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="35" height="31" uuid="5f65e0f3-9f0c-49e6-b4ca-83c42fa3d7eb"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="18" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[($F{pmVisitsMonths}.contains("$3$"))?"X":""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="36" uuid="4a14911f-aa27-41da-8eb3-f17c0cfa91ca">
+						<jr:columnHeader style="table_CH" height="50" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH_small" x="0" y="0" width="36" height="50" uuid="645fea0b-f133-479d-8245-c27a5ff29441"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="9" isBold="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+								</textElement>
+								<text><![CDATA[فبراير
+2]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="36" height="31" uuid="97f52347-84ca-4a40-b221-8d59354759a0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="18" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[($F{pmVisitsMonths}.contains("$2$"))?"X":""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="36" uuid="a9b35860-45a4-459f-9367-ec4fbc95e623">
+						<jr:columnHeader style="table_CH" height="50" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH_small" x="0" y="0" width="36" height="50" uuid="b75c26ee-bdee-489c-b919-13ffb3236348"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+								</textElement>
+								<text><![CDATA[يناير
+1]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="36" height="31" uuid="c3037d74-cdf4-4c33-8614-415e48f74d26"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="18" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[($F{pmVisitsMonths}.contains("$1$"))?"X":""]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="52" uuid="c89efac6-c1c9-49e3-bad0-43643ab253ad">
+						<jr:columnHeader style="table_CH_normal" height="50" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH_normal" x="0" y="0" width="52" height="50" isRemoveLineWhenBlank="true" uuid="c0141b7e-6fb3-467a-9ba1-e36499d392a8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="13" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+								</textElement>
+								<text><![CDATA[الزيارات
+ خلال
+ العقد]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="52" height="31" uuid="3eddc1dd-e14e-4286-ba83-5c65eafd3857"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="12" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{contractVisitsNo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="48" uuid="be69222c-cca4-4ba0-a046-56c33c35e745">
+						<jr:columnHeader style="table_CH_normal" height="50" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH_normal" x="0" y="0" width="48" height="50" uuid="f0a36e9f-a3ec-4b4c-8642-61cb7b82697d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Times New Roman" size="13" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[عدد الأجهزة]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="48" height="31" uuid="f69f0ccf-23ef-4137-80d6-7c76ece7197e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Times New Roman" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Times New Roman" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{deviceNoInSite}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="97" uuid="a390b203-cb25-4b23-a602-11bdb328e6f7">
+						<jr:columnHeader style="table_CH_normal" height="50" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH_normal" x="0" y="0" width="97" height="50" uuid="e285db95-124d-4812-b18a-f5fba687e6e5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="13" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+								</textElement>
+								<text><![CDATA[اسم مقاول
+ الباطن]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="97" height="31" uuid="4946f227-8cdd-4543-9544-3ad6c1bef9ab"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="12" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{subcontractor}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="40" uuid="08630a0d-4d34-4fb4-b95c-edd6b6fb1d53">
+						<jr:columnHeader style="table_CH_normal" height="50" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH_normal" x="0" y="0" width="40" height="50" uuid="d44b38b7-257e-48e0-84a8-c248302dceee"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="13" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+								</textElement>
+								<text><![CDATA[الفئة]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="40" height="31" uuid="e47fff4c-36e2-4f46-a7f7-f69789149f43"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="12" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{category}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="136" uuid="08630a0d-4d34-4fb4-b95c-edd6b6fb1d53">
+						<jr:columnHeader style="table_CH_normal" height="50" rowSpan="1">
+							<staticText>
+								<reportElement style="table_CH_normal" x="0" y="0" width="136" height="50" uuid="d44b38b7-257e-48e0-84a8-c248302dceee"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="13" isBold="true" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+								</textElement>
+								<text><![CDATA[اسم الجهاز]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="31" rowSpan="1">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="136" height="31" uuid="e47fff4c-36e2-4f46-a7f7-f69789149f43"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font fontName="Times New Roman" size="12" pdfFontName="Times New Roman" pdfEncoding="Identity-H"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{deviceName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>

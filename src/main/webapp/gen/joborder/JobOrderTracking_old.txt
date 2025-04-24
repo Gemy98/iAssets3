@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8"  import="com.iassets.general.util.*,com.iassets.common.util.*,com.iassets.general.entity.*,com.iassets.common.entity.*,java.util.*"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<script>
+function _onClickCloseButton(btnObj){
+	
+	if($(btnObj).is(":checked")){
+		$("#actualCloseDate").datepicker( "setDate", new Date());
+		$("#close_date_container").show();
+		markAsRequired("#joRequestFormUrl");
+	}else{
+		$("#actualCloseDate").val("");
+		$("#close_date_container").hide();
+		markAsNotRequired("#joRequestFormUrl");
+	}
+}
+
+function _onChangeSpFirstRadio(obj){
+	var selectedValue = $(obj).filter(':checked').val();
+	if(selectedValue == 0){
+	   $('input[name="fromSpInventory"]').prop('checked', false);
+	   $("#grp1").hide();
+	   $("#grp2").hide();
+	   $("#grp3").hide();
+	 }else{
+	   $("#grp1").show();
+	}
+	_onChangeFromSpInventoryRadio($('input[name="fromSpInventory"]'));
+}
+
+function _onChangeFromSpInventoryRadio(obj){
+	markAsNotRequired("#closed");
+	var selectedValue = $(obj).filter(':checked').val();
+	if(selectedValue == 1)
+	   markAsRequired("#closed");
+	
+}
+
+function _onBlurSecondAction(){
+
+	if($("#secondAction").val().trim().length != 0 || $("#secondActionDate").val().trim().length != 0){
+	    markAsRequired("#secondActionDate");
+		markAsRequired("#secondAction");
+	}else{
+		markAsNotRequired("#secondAction");
+		markAsNotRequired("#secondActionDate");
+	}
+}
+
+function _onBlurThirdAction(){
+	if($("#finalAction").val().trim().length != 0 || $("#finalActionDate").val().trim().length != 0 || $("#finalReportUrl").val().trim().length != 0){
+	    markAsRequired("#secondActionDate");
+		markAsRequired("#secondAction");
+		markAsRequired("#finalAction");
+		markAsRequired("#finalActionDate");
+		markAsRequired("#finalReportUrl");
+	}else{
+		_onBlurSecondAction();
+		markAsNotRequired("#finalAction");
+		markAsNotRequired("#finalActionDate");
+		markAsNotRequired("#finalReportUrl");
+	}
+}
+
+function getSPInventoryContentDetails(srcObj, rowIndex){
+	
+	var codeVal = $(srcObj).val();
+	
+	if (codeVal != null){
+		$("#inventorySpareParts_spDescription_" + rowIndex).html("");
+	    $("#inventorySpareParts_spQuantity_" + rowIndex).val("");
+	    $("#inventorySpareParts_spPrice_" + rowIndex).html("");
+	    
+		// reset validation error
+		$("#inventorySpareParts_spQuantity_" + rowIndex).removeClass('error').next('label.error').remove();
+	    
+	    if (codeVal != ""){
+		  	jQuery.getJSON("gen/JobOrderSPInventoryAjax",{code: codeVal}, function(data){
+			    if (typeof data.msg == 'undefined'){    
+				    $("#inventorySpareParts_spDescription_" + rowIndex).html(data.spDescription);
+				    $("#inventorySpareParts_spQuantity_" + rowIndex).val(data.spQuantity);
+				    $("#inventorySpareParts_spPrice_" + rowIndex).html(data.spPrice);
+			    }else {
+			    	alert($(srcObj).val()+  " : " + data.msg);
+				    $(srcObj).val("");
+			    }
+		    });
+	   }
+
+	}
+}
+</script>
+</head>
+<body>
+<form method="post" action="JobOrderTrackingProcess" enctype="multipart/form-data">
+<table class="layout_grid">
+<tr>
+  <td colspan="2"><h1 class="page_title">شاشة متابعة أمر عمل مفتوح</h1></td>
+</tr>
+<tr>
+  <td colspan="2"><%@ include file="../DeviceAndJobOrderInfo.jsp" %>
+</td>
+</tr>
+<tr>
+	<td class="side_label_top">تحميل نموذج إبلاغ عن عطل :</td>
+	<td><input type="file" name="joRequestFormUrl" id="joRequestFormUrl" multiple></td>
+</tr>
+<tr>
+  <td class="side_label_top">الإجراء الأول :</td>
+  <td><textarea name="firstAction" id="firstAction" required></textarea></td>
+</tr>
+<tr>
+  <td class="side_label_middle">تاريخ الإجراء الأول :</td>
+  <td><input type="text" name="firstActionDate" id="firstActionDate" class="caldr" required></td>
+</tr>
+<tr>
+  <td class="side_label_middle">الإصلاح بقطع غيار :</td>
+  <td><input name="fixIncludingSpareParts" value="1" type="radio" required>
+    نعم
+    <input name="fixIncludingSpareParts" value="0" type="radio" required>
+    لا</td>
+</tr>
+<tbody id="grp1">
+<tr>
+  <td class="side_label_middle">قطع غيار من المستودع :</td>
+  <td>
+    <input name="fromSpInventory" value="1" type="radio" required>
+    نعم
+    <input name="fromSpInventory" value="0" type="radio" required>
+    لا
+  </td>
+</tr>
+</tbody>
+<tbody id="grp2" style="background: #eee;margin-bottom: 10px">
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+  <td class="side_label_middle">تاريخ السحب :</td>
+  <td><input type="text" name="spTransDate" id="spTransDate" class="caldr" required></td>
+  </tr>
+  <tr>
+    <td class="side_label_middle">قطع الغيار المستخدمة :</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2"><table width="100%" id="inventorySpareParts"></table></td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+</tbody>
+<tbody id="grp3" style="background: #eee">
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="side_label_top">تحميل تقرير الوكيل / المقاول :</td>
+    <td><input type="file" name="agentReportUrl" id="agentReportUrl" multiple /></td>
+  </tr>
+  <tr>
+  <td class="side_label_middle">قطع الغيار المستخدمة :</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2"><table width="100%" id="jobOrderSpareParts"></table></td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+</tbody>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+<tr>
+  <td class="side_label_top">الإجراء الثاني :</td>
+  <td><textarea name="secondAction" id="secondAction"></textarea></td>
+</tr>
+<tr>
+  <td class="side_label_middle">تاريخ الإجراء الثاني :</td>
+  <td><input type="text" name="secondActionDate" id="secondActionDate" class="caldr"></td>
+</tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+<tr>
+  <td class="side_label_top">التقرير النهائي :</td>
+  <td><textarea name="finalAction" id="finalAction"></textarea></td>
+</tr>
+<tr>
+  <td class="side_label_middle">تاريخ التقرير النهائي :</td>
+  <td><input type="text" name="finalActionDate" id="finalActionDate"  class="caldr"></td>
+</tr>
+<tr>
+  <td class="side_label_top">رفع التقرير النهائي :</td>
+  <td><input type="file" name="finalReportUrl" id="finalReportUrl" multiple></td>
+</tr>
+<%-- if(! WebUtil.sessionUserRestricted(request)){--%>
+<% if(WebUtil.userHasRightToCloseJobOrder(request)){%>
+<tr>
+  <td colspan="2">&nbsp;</td>
+</tr>
+<tr>
+  <td colspan="2" class="side_label_middle" style="text-align:right">
+  <input name="closed" id="closed" type="checkbox" value="1" onclick="_onClickCloseButton(this)">
+    تم الانتهاء من أمر العمل (سيتم إغلاق أمر العمل عند الضغط على هذا الاختيار)</td>
+</tr>
+<tr id="close_date_container">
+  <td class="side_label_top">تاريخ الإغلاق :</td>
+  <td><input type="text" name="actualCloseDate" id="actualCloseDate" class="caldr" required></td>
+</tr>
+<%}%>
+<tr>
+  <td colspan="2">&nbsp;</td>
+</tr>
+<tr>
+  <td colspan="2"><input type="submit" name="button" id="button" value="اتمام العملية"><%=HtmlUtil.getResetButtonHTML()%></td>
+</tr>
+</table>
+</form>
+
+
+<script>
+
+$(function(){
+	
+<%
+	JobOrder jobOrder = jobOrderInfo;
+	int jobOrderSpareParts = 0 ;
+	if (jobOrder.getJobOrderSpareParts()!= null )
+	    jobOrderSpareParts = jobOrder.getJobOrderSpareParts().size();
+	
+    
+    String firstAction = Common.getDisplayString(jobOrder.getFirstAction(),"");
+    String firstActionDate =  DateUtil.getDateString(jobOrder.getFirstActionDate());
+    Boolean fixIncludingSpareParts = jobOrder.getFixIncludingSpareParts();
+    Boolean fromSpInventory = jobOrder.getSparePartsFromInventory();
+
+    String secondAction = Common.getDisplayString(jobOrder.getSecondAction(),"");
+    String secondActionDate =  DateUtil.getDateString(jobOrder.getSecondActionDate());
+    String finalAction = Common.getDisplayString(jobOrder.getFinalAction(),"");
+    String finalActionDate =  DateUtil.getDateString(jobOrder.getFinalActionDate());
+    
+    String requestFormFiles = jobOrder.getRequestFormUrl();
+    String agentReportFiles = jobOrder.getAgentReportUrl();
+    String finalReportFiles =  jobOrder.getFinalReportUrl();
+%>
+	
+	// validation
+	//$("input[name='fixIncludingSpareParts']").rules("add",{required:true});
+	//$("input[name='fixIncludingSpareParts']").change(function(){_onChangeRadio()});
+	<% if(WebUtil.userHasRightToCloseJobOrder(request)){%>
+		$("#close_date_container").hide();
+		
+		$("#actualCloseDate" ).rules( "add", {
+			dateGreaterThan: ['#joborder_date',"#firstActionDate","#secondActionDate","#finalActionDate"],
+			messages: {	dateGreaterThan: "يجب أن يكون تاريخ الإغلاق بعد كل التواريخ السابقة"}
+		});
+		
+	 <%-- $("#closed").rules("add" ,{required :  <%=(fromSpInventory != null && fromSpInventory == true) ? "true" : "false"%> });  --%>
+	<%}%>
+	
+	$("#spTransDate").datepicker( "setDate", new Date());
+	
+	$("#firstActionDate" ).rules( "add", {
+		dateGreaterThan: ['#joborder_date'],
+		messages: {	dateGreaterThan: "يجب أن يكون التاريخ بعد تاريخ فتح أمر العمل"}
+	});
+	
+	$("#secondActionDate" ).rules( "add", {
+		dateGreaterThan: ['#joborder_date',"#firstActionDate"],
+		messages: {	dateGreaterThan: "يجب أن يكون التاريخ بعد  تاريخ الإجراء الأول"}
+	});
+	
+	$("#finalActionDate" ).rules( "add", {
+		dateGreaterThan: ['#joborder_date',"#firstActionDate","#secondActionDate"],
+		messages: {	dateGreaterThan: "يجب أن يكون التاريخ بعد تاريخ الإجراء الثاني"}
+	});
+	
+
+	// end of validation related code
+	setRadioCheckedValue("fromSpInventory",'<%=(fromSpInventory != null && fromSpInventory) ? "1" : "0"%>');	
+	attachConditionalDisplayHandlerToRadio('fromSpInventory', {"1":"grp2" , "0":"grp3"});
+    $('input:radio[name="fromSpInventory"]').change(function(){_onChangeFromSpInventoryRadio(this)});
+		//attachConditionalDisplayHandlerToRadio('fixIncludingSpareParts', {"1":"grp1"});
+	$('input:radio[name="fromSpInventory"]:checked').change(); 
+	
+	setRadioCheckedValue("fixIncludingSpareParts",'<%=(fixIncludingSpareParts != null && fixIncludingSpareParts) ? "1" : "0"%>');	
+	attachConditionalDisplayHandlerToRadio('fixIncludingSpareParts', {"1":"grp1"});
+    $('input:radio[name="fixIncludingSpareParts"]').change(function(){_onChangeSpFirstRadio(this)});
+	$('input:radio[name="fixIncludingSpareParts"]:checked').change(); 
+
+    
+	$('#jobOrderSpareParts').appendGrid({
+	    initRows: <%=jobOrderSpareParts%>,
+	    i18n: {rowEmpty:'لم يتم إضافة أي قطع غيار للجهاز'},
+	    columns: [
+	            { name: 'accQuantity', display: 'الكمية', type: 'text', displayCss:{'text-align':'center'}, ctrlCss: { display:'block', width: '50px', margin: 'auto', 'font-size':'.9em'}, ctrlProp: { required: true }, ctrlAttr: { 'data-rule-digits': true } },
+	            { name: 'accDescription', display: 'الوصف' , type: 'text', displayCss:{'text-align':'center'}, ctrlCss: { display:'block', width: '250px', margin: 'auto', 'font-size':'.9em'}, ctrlProp: { required: true } },
+	            { name: 'accPrice', display: 'سعر القطعة' , type: 'text', displayCss:{'text-align':'center'}, ctrlCss: { display:'block', width: '100px', margin: 'auto', 'font-size':'.9em'}, ctrlProp: { required: true }, ctrlAttr: { 'data-rule-number': true } },
+	        ]
+	}); 
+	
+	
+	
+	$('#inventorySpareParts').appendGrid({
+	    initRows: 0,
+	    i18n: {rowEmpty:'لم يتم إضافة أي قطع غيار للجهاز'},
+	    columns: [
+	           { name: 'spCode', display: 'الكود', type: 'text' ,  displayCss:{'text-align':'center'}, ctrlCss: {border :'none', display:'block', width: '70px', margin: 'auto', 'font-size':'.9em'}, ctrlProp: { required: true }}, 
+	           { name: 'spDescription', display: 'الوصف' , type: 'custom', displayCss:{'text-align':'center'}, ctrlCss: { display:'block', width: '250px', margin: 'auto', 'font-size':'.9em'}, ctrlProp: { required: true } ,
+	               customBuilder: function (parent, idPrefix, name, uniqueIndex) {
+	                  var ctrlId = idPrefix + '_' + name + '_' + uniqueIndex;
+	                  var ctrl = document.createElement('span');
+	                  $(ctrl).attr({ id: ctrlId, name: ctrlId }).appendTo(parent);
+	                  return ctrl;
+	                }
+              },
+			  { name: 'spQuantity', display: 'الكمية', type: 'text' , displayCss:{'text-align':'center'}, ctrlCss: { display:'block', width: '50px', margin: 'auto', 'font-size':'.9em'}, ctrlProp: { required: true }, ctrlAttr: {'data-msg-remote'  : 'الكمية المتاحة أقل من المطلوب',   'data-rule-digits': true} },
+	          { name: 'spPrice', display: 'سعر القطعة' , type: 'custom', displayCss:{'text-align':'center'}, ctrlCss: { display:'block', width: '100px', margin: 'auto', 'font-size':'.9em'}, ctrlProp: { required: true },
+				  customBuilder: function (parent, idPrefix, name, uniqueIndex) {
+	                  var ctrlId = idPrefix + '_' + name + '_' + uniqueIndex;
+	                  var ctrl = document.createElement('span');
+	                  $(ctrl).attr({ id: ctrlId, name: ctrlId }).appendTo(parent);
+	                  return ctrl;
+                   } 
+	          },
+	        ],
+	    
+	        afterRowAppended: function (caller, parentRowIndex, addedRowIndex) {	
+	        	   var uniqueIndex = $('#inventorySpareParts').appendGrid('getUniqueIndex', addedRowIndex);
+	        	   // alert("uniqueIndex : " + uniqueIndex);
+		           
+	        	   var spCode = $('#inventorySpareParts').appendGrid('getCellCtrl', 'spCode', (uniqueIndex));
+		           $(spCode).blur(function(){
+		        		  getSPInventoryContentDetails(this , parseInt(uniqueIndex));
+		           });
+		           
+		           var spQuantity    = $('#inventorySpareParts').appendGrid('getCellCtrl', 'spQuantity', (uniqueIndex));
+		           var spPrice       = $('#inventorySpareParts').appendGrid('getCellCtrl', 'spPrice', (uniqueIndex));
+		           var spDescription = $('#inventorySpareParts').appendGrid('getCellCtrl', 'spDescription', (uniqueIndex));
+	  
+		     	  $(spQuantity).rules("add",{
+			     	remote:{
+			     		url: "gen/JobOrderSPInventoryAjax",
+			     		data: {
+			     		      code: function(){return $(spCode).val()},
+			     		      quantity: function(){return $(spQuantity).val()}		
+			     			 }
+			     	}
+		          });
+		       }
+		}); 
+	
+	
+
+	
+ <%if (fixIncludingSpareParts != null) {
+	 if (fromSpInventory != null){
+	   JobOrderSparePart josp = null;
+	   if(fromSpInventory){
+	      for (int i = 0 ; i < jobOrderSpareParts;  i++){ 
+	        josp = jobOrder.getJobOrderSpareParts().get(i);%>
+	  		setTextFieldValue("inventorySpareParts_spCode_"+(<%=i+1%>),"<%=josp.getSpInventoryCategoryId().getCode()%>");
+	  	    setInnerHTML("inventorySpareParts_spDescription_"+(<%=i+1%>),"<%=josp.getSpInventoryCategoryId().getName()%>");
+	        setTextFieldValue("inventorySpareParts_spQuantity_"+(<%=i+1%>),"<%=josp.getQuantity()%>");
+	        setInnerHTML("inventorySpareParts_spPrice_"+(<%=i+1%>),"<%=josp.getSpInventoryCategoryId().getAvgUnitPrice()%>");
+
+	   <%}
+	}else{
+	   for (int i = 0 ; i < jobOrderSpareParts;  i++){ 
+		   josp = jobOrder.getJobOrderSpareParts().get(i);%>
+		   setTextFieldValue("jobOrderSpareParts_accQuantity_"+(<%=i+1%>),"<%=josp.getQuantity()%>");
+		   setTextFieldValue("jobOrderSpareParts_accDescription_"+(<%=i+1%>),"<%=josp.getDescription()%>");
+		   setTextFieldValue("jobOrderSpareParts_accPrice_"+(<%=i+1%>),"<%=josp.getPrice()%>"); 
+   <%}}}}%>
+   
+  
+   
+    setInnerHTML("firstAction","<%=firstAction%>");
+    setDateValue("firstActionDate","<%=firstActionDate%>");
+    setInnerHTML("secondAction","<%=secondAction%>");
+    setDateValue("secondActionDate","<%=secondActionDate%>");
+    setInnerHTML("finalAction","<%=finalAction%>");
+    setDateValue("finalActionDate","<%=finalActionDate%>");
+    
+    showUploadedFilesList("joRequestFormUrl", <%=HtmlUtil.arrayFromJavaToJavaScript(requestFormFiles)%>);
+    showUploadedFilesList("agentReportUrl", <%=HtmlUtil.arrayFromJavaToJavaScript(agentReportFiles)%>);
+	showUploadedFilesList("finalReportUrl", <%=HtmlUtil.arrayFromJavaToJavaScript(finalReportFiles)%>);
+    
+	// validation
+	$("#secondAction, #finalAction").blur(function(){_onBlurThirdAction()});
+	$("#finalReportUrl").change(function(){_onBlurThirdAction()});
+	$("#secondActionDate, #finalActionDate").datepicker( 'option' , 'onClose', function(){_onBlurThirdAction()});
+	_onBlurThirdAction(); // To initiate the validation rules in the update mode
+	// end of validation related code
+    
+});
+
+</script>
+</body>
+</html>

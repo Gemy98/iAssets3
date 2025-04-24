@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link href="js/jquery-ui.css" rel="stylesheet"/>
+<link href="js/jquery.appendGrid-1.3.5.css" rel="stylesheet"/>
+<link href="css/pure-min.css" rel="stylesheet"/>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/jquery.appendGrid-1.3.5.js"></script>
+<script type="text/javascript">
+   $(function () {
+        // Initialize appendGrid
+        $('#tblAppendGrid').appendGrid({
+            caption: 'partners details :',
+            initRows: 1,
+            columns: [
+                    { name: 'name', display: 'Name', type: 'text', ctrlAttr: { maxlength: 100 }, ctrlCss: { width: '100px'} },
+                    { name: 'country', display: 'Country', type: 'select', ctrlOptions: { } },
+                    { name: 'recordId', type: 'hidden', value: 0 }
+                ]
+        });  
+		
+		
+		
+    if ($('#tblAppendGrid').appendGrid('isReady')) {
+        $('#tblAppendGrid').prop('align','center').addClass("pure-table pure-table-bordered");
+    }
+
+		
+		  
+    });
+</script>
+</head>
+<body>
+    <table id="tblAppendGrid"></table>
+</body>
+</html>

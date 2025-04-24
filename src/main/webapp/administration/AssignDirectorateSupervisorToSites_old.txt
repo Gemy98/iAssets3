@@ -1,0 +1,66 @@
+<%@ page import="java.util.List,com.iassets.common.entity.*,com.iassets.common.util.*" language="java" pageEncoding="UTF-8"%>
+<%
+List<CommonSite> sites = (List<CommonSite>) request.getAttribute("sites");
+List<CommonEmployee> dirSupervisors = (List<CommonEmployee>) request.getAttribute("dirSupervisors");
+String currAppDir = WebUtil.getCurrentlyActiveAppDirectory(request);
+Enums.USER_ALLOWED_APP_TYPE currentlyActiveAppType = WebUtil.getCurrentlyActiveApp(request);
+
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>تخصيص مشرفي المديرية للمواقع</title>
+</head>
+<body>
+<form method="post" action="<%=currAppDir%>/AssignDirectorateSupervisorToSitesProcess">
+   <%=WebUtil.getSessionMessage(request)%>
+   <table class="layout_grid">
+     <tr>
+       <td colspan="2"><h1 class="page_title">شاشة تخصيص مشرفي المديرية للمواقع</h1></td> 
+     </tr>
+      <%
+      	if(dirSupervisors != null && ! dirSupervisors.isEmpty()){
+      %>
+     <tr>
+       <td colspan="2" align="center">
+         <table id="site_list" class="data_table">
+         	<tr>
+         	  <th>اسم الموقع</th>
+         	  <th>مشرف المديرية</th>
+         	</tr>
+         <%
+         	for(CommonSite s: sites){
+               Integer siteId = s.getId();
+         %>
+            <tr>
+              <td align="center"><%=s.getName()%><input type="hidden" name="siteId" value="<%=siteId%>" /> </td>
+              <td align="center"> 
+                 <select id="empId_<%=siteId%>" name="empId">
+		           <%
+		           	for (CommonEmployee e :dirSupervisors){
+		           		if(currentlyActiveAppType == Enums.USER_ALLOWED_APP_TYPE.BIOMEDICAL_MAINTENANCE_APP){%>
+		                    <option value="<%=e.getId()%>" <%=(s.getBioDirectorateSupervisors() != null && e.getId().equals(s.getBioDirectorateSupervisors().getId()))?"selected='selected'":""%>><%=e.getName()%></option>
+		           <%}else if(currentlyActiveAppType == Enums.USER_ALLOWED_APP_TYPE.GENERAL_MAINTENANCE_APP){%>
+		           	    	<option value="<%=e.getId()%>" <%=(s.getGenDirectorateSupervisors() != null && e.getId().equals(s.getGenDirectorateSupervisors().getId()))?"selected='selected'":""%>><%=e.getName()%></option>
+		           <%}
+		           }%>
+		         </select>
+              </td>
+            </tr>
+         <%}%>
+         </table>
+       </td>
+     </tr>
+     <tr>
+        <td colspan="2" align="center"><input type="submit" name="button" id="button" value="تطبيق التعديلات"></td>
+     </tr>
+     <%}else{%>
+        <tr>
+          <td colspan="2"><h3 class='error_msg'>لم يتم إضافة أي من مشرفي المديرية للنظام</h3></td> 
+        </tr>
+     <%}%>
+   </table>
+</form>
+</body>
+</html>

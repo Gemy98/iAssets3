@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="سجل جهاز (إجمالي تكاليف صيانته)" columnDirection="RTL" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" uuid="6ae21181-3639-4c90-8142-e3b326eb266f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="48"/>
+	<import value="com.iassets.general.entity.*"/>
+	<template><![CDATA["mmp.jrtx"]]></template>
+	<style name="table_TD_Alternative" style="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#F8FAFF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="Table Dataset" uuid="706c6279-c931-48fc-8522-3578d58def9c">
+		<parameter name="prev_cost" class="java.lang.Float"/>
+		<field name="jobOrderNo" class="java.lang.String"/>
+		<field name="jobOrderDate" class="java.util.Date"/>
+		<field name="jo" class="com.iassets.general.entity.GenJobOrder">
+			<fieldDescription><![CDATA[_THIS]]></fieldDescription>
+		</field>
+		<field name="damageDescription" class="java.lang.String"/>
+		<variable name="total_cost" class="java.lang.Float" calculation="Sum">
+			<variableExpression><![CDATA[$F{jo}.getSparePartsTotalCost()]]></variableExpression>
+			<initialValueExpression><![CDATA[0f]]></initialValueExpression>
+		</variable>
+	</subDataset>
+	<parameter name="jOrderList" class="java.util.List"/>
+	<parameter name="repoTitle" class="java.lang.String"/>
+	<parameter name="device" class="com.iassets.general.entity.GenHospitalDevice"/>
+	<parameter name="prevCost" class="java.lang.Float"/>
+	<parameter name="deviceStatus" class="java.lang.String"/>
+	<parameter name="locationName" class="java.lang.String"/>
+	<parameter name="operatingCompany" class="java.lang.String"/>
+	<pageHeader>
+		<band height="72">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="50" uuid="7773cecd-f3ea-440d-86a4-a640c012e2ec"/>
+				<subreportParameter name="repoTitle">
+					<subreportParameterExpression><![CDATA[$P{repoTitle}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="locationName">
+					<subreportParameterExpression><![CDATA[$P{locationName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="operatingCompany">
+					<subreportParameterExpression><![CDATA[$P{operatingCompany}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA["header_portrait.jasper"]]></subreportExpression>
+			</subreport>
+			<frame>
+				<reportElement x="0" y="0" width="555" height="72" uuid="d1694360-94ba-4f05-94c7-61aa3e579974"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+			</frame>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="27">
+			<textField>
+				<reportElement style="page_number" x="0" y="0" width="555" height="27" uuid="f01e0839-3c55-4f83-800a-3cdd2f8ae169"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="279">
+			<staticText>
+				<reportElement style="side_label" x="486" y="2" width="60" height="29" uuid="4a4e73b9-4d9c-44fa-aeb4-00340f2a1cbd"/>
+				<text><![CDATA[اسم الجهاز : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="side_label" x="486" y="30" width="60" height="29" uuid="158bafe5-7ff1-4410-970f-b1302062b3ac"/>
+				<textElement rotation="None" markup="none">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[كود الجهاز : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="side_label" x="306" y="30" width="74" height="29" uuid="776140b2-0273-468b-a519-c3bc4784b3eb"/>
+				<textElement rotation="None" markup="none">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[الرقم التسلسلي : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="side_label" x="486" y="58" width="60" height="29" uuid="9cf2da9e-67ac-4586-9eb3-d0427df03039"/>
+				<textElement rotation="None" markup="none">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[المكان :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="side_label" x="505" y="86" width="41" height="29" uuid="a1310e86-6862-4497-bda1-54c39df45f77"/>
+				<textElement rotation="None" markup="none">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[الموديل :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="side_label" x="457" y="143" width="89" height="29" uuid="89f4f9c8-5754-4ebe-a6c8-45d287767032"/>
+				<textElement rotation="None" markup="none">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[حالة الجهاز الحالية :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="side_label" x="8" y="172" width="538" height="59" uuid="6da4f3e5-5ae4-42a5-ab2f-a51c615e297f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font size="16"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[تفاصيل تكاليف صيانة الجهاز حتي الآن : ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="right_aligned_cell" x="8" y="2" width="478" height="29" uuid="17da65c8-b358-49d0-a216-81e8faae49e0"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{device}.getName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="right_aligned_cell" x="379" y="30" width="107" height="29" uuid="77315ae7-9fde-466b-9862-d4708955436e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{device}.getCode()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="right_aligned_cell" x="8" y="86" width="497" height="29" uuid="80adbcd2-93f4-4714-a2cd-7033f3a1cbde"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{device}.getModel()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="right_aligned_cell" x="8" y="143" width="449" height="29" uuid="3e41da8a-d1fd-4889-a275-f7e9067b856d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{deviceStatus}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement style="right_aligned_cell" x="8" y="30" width="299" height="29" uuid="67a9593d-d99f-45d7-b8d9-449831579b00"/>
+				<textElement textAlignment="Right" rotation="None" markup="none">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{device}.getSerialNo()]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement style="right_aligned_cell" x="8" y="58" width="478" height="29" uuid="6006e247-de77-486e-8c0e-3a67907cdb7f"/>
+				<textElement textAlignment="Right">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{device}.getLocation()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="side_label" x="447" y="114" width="99" height="29" uuid="63845391-0558-4aea-bdb7-2d0c4a6512a9"/>
+				<textElement rotation="None" markup="none">
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[تاريخ تركيبه وتشغيله :]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement style="right_aligned_cell" x="8" y="114" width="439" height="29" uuid="68ed00b9-2600-4dd9-b356-5099941b069f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{device}.getOperationDate()]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement key="table" style="table" x="8" y="231" width="538" height="48" uuid="a153f7d1-834a-44fe-b844-0fc7c428df06"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="Table Dataset" uuid="4f42b9a8-4e42-466f-8936-8feedb93c74c">
+						<datasetParameter name="prev_cost">
+							<datasetParameterExpression><![CDATA[$P{prevCost}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{jOrderList})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:columnGroup width="539" uuid="d00f4fd4-90d2-4f11-bbe2-a556e0a1d29b">
+						<jr:tableFooter height="105" rowSpan="1">
+							<frame>
+								<reportElement x="0" y="35" width="539" height="35" uuid="66020971-b953-4fdc-8331-04111af8c84b"/>
+								<staticText>
+									<reportElement style="side_label" x="266" y="0" width="243" height="35" uuid="29842728-2084-4838-aee9-fe29cc61b828"/>
+									<textElement textAlignment="Right" verticalAlignment="Middle">
+										<font size="12"/>
+									</textElement>
+									<text><![CDATA[إجمالي تكاليف صيانة الجهاز المسجلة على النظام :]]></text>
+								</staticText>
+								<textField pattern="###0.00;-###0.00">
+									<reportElement style="right_aligned_cell" x="40" y="0" width="226" height="35" uuid="9bbaccdd-0d31-4a3c-9dca-b2464fd14959"/>
+									<textElement textAlignment="Right" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$V{total_cost}]]></textFieldExpression>
+								</textField>
+							</frame>
+							<frame>
+								<reportElement x="0" y="0" width="539" height="35" uuid="cd4cb742-9d77-4284-82a5-0a9bf7e3bb98"/>
+								<textField pattern="###0.00;-###0.00">
+									<reportElement style="right_aligned_cell" x="40" y="0" width="226" height="35" uuid="e8ec7ab3-82bc-47e1-932a-eef859d1b9ad"/>
+									<textElement textAlignment="Right" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{prev_cost}]]></textFieldExpression>
+								</textField>
+								<staticText>
+									<reportElement style="side_label" x="265" y="0" width="244" height="35" uuid="38312672-b5b0-46a4-b24a-e980e2d4eb0b"/>
+									<textElement textAlignment="Right" verticalAlignment="Middle">
+										<font size="12"/>
+									</textElement>
+									<text><![CDATA[إجمالي تكاليف صيانة الجهاز الغير المسجلة على النظام :]]></text>
+								</staticText>
+							</frame>
+							<frame>
+								<reportElement x="0" y="70" width="539" height="35" uuid="a6356293-c273-4ca5-9f98-b6169d7a0b10"/>
+								<textField pattern="###0.00;-###0.00">
+									<reportElement style="right_aligned_cell" x="40" y="0" width="226" height="35" uuid="06a0bba0-c370-471f-9b86-3d6476b0a103"/>
+									<textElement textAlignment="Right" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$P{prev_cost}+$V{total_cost}]]></textFieldExpression>
+								</textField>
+								<staticText>
+									<reportElement style="side_label" x="266" y="0" width="243" height="35" uuid="dc12dfc0-1939-46e8-a483-6183e55034c8"/>
+									<textElement textAlignment="Right" verticalAlignment="Middle">
+										<font size="12"/>
+									</textElement>
+									<text><![CDATA[إجمالي تكاليف صيانة الجهاز منذ تركيبه وتشغيله  :]]></text>
+								</staticText>
+							</frame>
+						</jr:tableFooter>
+						<jr:column width="125" uuid="ba05afec-a46f-40ed-b268-de69f8b75998">
+							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="table_CH" x="0" y="0" width="125" height="30" uuid="dd8b0582-5e9e-403e-9b7e-8f3061beadf5"/>
+									<textElement>
+										<font size="13"/>
+									</textElement>
+									<text><![CDATA[إجمالي تكلفة قطع الغيار]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="125" height="30" uuid="471edc1d-02c8-40ec-b825-56ce8ab7ed5a"/>
+									<textElement>
+										<font size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[Float.valueOf($F{jo}.getSparePartsTotalCost())]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="184" uuid="6960adcf-9529-4a99-ab67-051505a064d8">
+							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="table_CH" x="0" y="0" width="184" height="30" uuid="5fcb75ce-f4ea-440b-82c4-90022703b56a"/>
+									<textElement rotation="None" markup="none">
+										<font size="13"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<text><![CDATA[وصف العطل]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="false">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="184" height="30" uuid="2a9e053c-7a41-47ff-8302-5e24a794ea56"/>
+									<textElement rotation="None" markup="none">
+										<font size="12"/>
+										<paragraph lineSpacing="Single"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{damageDescription}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="100" uuid="63c8e7ae-997c-4438-9fed-b0063f946058">
+							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="table_CH" x="0" y="0" width="100" height="30" uuid="76d2d79b-fc34-42b5-acc8-289e185cf9b7"/>
+									<textElement>
+										<font size="13"/>
+									</textElement>
+									<text><![CDATA[تاريخ أمر العمل]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="100" height="30" uuid="e07df206-47ff-4af4-aee8-efc736624bd2"/>
+									<textElement>
+										<font size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{jobOrderDate}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="100" uuid="72f81754-9ca0-4387-b932-0b71e37d43c6">
+							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="table_CH" x="0" y="0" width="100" height="30" uuid="ecc6b271-ab88-43ef-9e75-7ad11f62e38b"/>
+									<textElement>
+										<font size="13"/>
+									</textElement>
+									<text><![CDATA[رقم أمر العمل]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="100" height="30" uuid="02a385e1-08a6-458d-b7d1-82eb8ffcecc4"/>
+									<textElement>
+										<font size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{jobOrderNo}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="30" uuid="82b2e0ed-d3ed-4021-a969-0b7dc2a5e815">
+							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement style="table_CH" x="0" y="0" width="30" height="30" uuid="ec5ef639-9c12-435d-ac90-b9355b5ef206"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="13"/>
+									</textElement>
+									<text><![CDATA[م]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell height="30" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement style="table_TD_Alternative" stretchType="RelativeToTallestObject" x="0" y="0" width="30" height="30" uuid="d5d7db7a-7e30-4f7c-8e9a-10d9f5fb8492"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>
