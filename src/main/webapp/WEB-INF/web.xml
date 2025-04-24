@@ -53,7 +53,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>dispatcher</servlet-name>
-    <url-pattern>*.*</url-pattern>
+    <url-pattern>/*</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>jsConstants</servlet-name>
@@ -159,6 +159,12 @@
   <security-role>
     <role-name>genDirSupervisorsAssignation</role-name>
   </security-role>
+
+  <security-role>
+    <role-name>genPerformanceEvaluator</role-name>
+  </security-role>
+
+
   <security-role>
     <role-name>bioContractorEvaluation</role-name>
   </security-role>
