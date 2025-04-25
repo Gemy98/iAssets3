@@ -7,6 +7,14 @@
   <version>1.0-SNAPSHOT</version>
   <name>iAssets3 Maven Webapp</name>
   <url>http://maven.apache.org</url>
+
+
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+
   <dependencies>
             <dependency>
                 <groupId>org.json</groupId>
@@ -33,8 +41,6 @@
       <artifactId>tomcat-jdbc</artifactId>
       <version>8.0.9</version>
     </dependency>
-
-
 
 
     <dependency>
@@ -147,6 +153,10 @@
       <artifactId>hibernate-entitymanager</artifactId>
       <version>5.4.0.Final</version>
     </dependency>
+
+
+
+
     <!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-validator</artifactId>
         <version>4.0.2.GA</version> <type>jar</type> <scope>compile</scope> </dependency> -->
     <dependency>
@@ -202,10 +212,19 @@
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
+
+<!--    <dependency>-->
+<!--      <groupId>mysql</groupId>-->
+<!--      <artifactId>mysql-connector-java</artifactId>-->
+<!--      <version>5.1.47</version>-->
+<!--    </dependency>-->
+
+
+
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>5.1.47</version>
+      <version>8.0.26</version> <!-- or any stable 8.x version you want -->
     </dependency>
 
 
@@ -288,6 +307,9 @@
           <release>11</release>
          
         </configuration>
+
+
+
       </plugin>
 
 

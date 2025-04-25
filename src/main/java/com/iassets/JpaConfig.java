@@ -39,7 +39,7 @@ public class JpaConfig {
     public DataSource dataSource() {
         String url = String.format("jdbc:mysql://%s:3306/%s", dbHost, dbName);
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver"); // Use com.mysql.cj.jdbc.Driver if on latest MySQL
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver"); // Use com.mysql.cj.jdbc.Driver if on latest MySQL
         dataSource.setUrl(url);
         dataSource.setUsername(dbUser);
         dataSource.setPassword(dbPass);
