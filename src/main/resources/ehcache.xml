@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <ehcache>
-    <defaultCache
-        maxElementsInMemory="100000"
-        eternal="true"
-        timeToIdleSeconds="0"
-        timeToLiveSeconds="0"
-        overflowToDisk="false"/>
+	<defaultCache maxElementsInMemory="100000" eternal="true"
+		timeToIdleSeconds="0" timeToLiveSeconds="0" overflowToDisk="false" />
 
-    <!-- settings per class -->
-  <!-- <cache name="com.danielme.demo.springjpahib.Country"
-        maxElementsInMemory="1000"
-        eternal="false"
-        timeToIdleSeconds="180"
-        timeToLiveSeconds="180"
-        overflowToDisk="false"/>
-        --> 
+	<!-- settings per class -->
+	<!-- <cache name="com.danielme.demo.springjpahib.Country" maxElementsInMemory="1000" 
+		eternal="false" timeToIdleSeconds="180" timeToLiveSeconds="180" overflowToDisk="false"/> -->
 </ehcache>

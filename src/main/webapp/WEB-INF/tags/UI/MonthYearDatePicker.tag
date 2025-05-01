@@ -1,7 +1,7 @@
 <%@ tag body-content="empty" pageEncoding="UTF-8"
-					trimDirectiveWhitespaces="true"%>
+	trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <fmt:setBundle basename="i18n.jsp_literals" />
 
 <%@ attribute name="id" required="true" type="java.lang.String"%>
@@ -11,26 +11,30 @@
 <%@ attribute name="minDate" required="false" type="java.util.Date"%>
 <%@ attribute name="maxDate" required="false" type="java.util.Date"%>
 
-    <tr>
-		<td class="side_label_middle"> <fmt:message key="${literalKey}" /> :</td>
-		<td>
-		<p><img alt="reset date" id="${id}_reset" src="image/xbuttonimage.png">
-		<input name="${name}" id="${id}" size="10" /></p>
-		</td>
-	</tr>
-		
-    
-    <style>
-    	.ui-datepicker-calendar {
-      		display: none; 
-    	}
-    	button.ui-datepicker-current {
-    	    display: none; 
-    	}
-	</style>
-	
-	
-	<script>
+<tr>
+	<td class="side_label_middle"><fmt:message key="${literalKey}" />
+		:</td>
+	<td>
+		<p>
+			<img alt="reset date" id="${id}_reset" src="image/xbuttonimage.png">
+			<input name="${name}" id="${id}" size="10" />
+		</p>
+	</td>
+</tr>
+
+
+<style>
+.ui-datepicker-calendar {
+	display: none;
+}
+
+button.ui-datepicker-current {
+	display: none;
+}
+</style>
+
+
+<script>
 /* 	  	$("#${id}_reset").hide(); */
  	  
 		$("#${id}_reset").click(function() {

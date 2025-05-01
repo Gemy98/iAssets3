@@ -1,13 +1,17 @@
 <%@tag body-content="empty" pageEncoding="UTF-8"
-					trimDirectiveWhitespaces="true" import="com.iassets.common.bo.charts.StackedBarChart"%>
+	trimDirectiveWhitespaces="true"
+	import="com.iassets.common.bo.charts.StackedBarChart"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ attribute name="idKey" required="true" type="java.lang.String"%>
-<%@ attribute name="bar" required="true" type="com.iassets.common.bo.charts.BarChart"%>
+<%@ attribute name="bar" required="true"
+	type="com.iassets.common.bo.charts.BarChart"%>
 <%@ attribute name="langCode" required="true" type="java.lang.String"%>
 
-<c:set var="title" value="${ LocalizationManager.getLiteral(bar.getTitleLiteralKey(), langCode)}" />
-<c:set var="barSegmentTitle" value="${ LocalizationManager.getLiteral(bar.getBarSegmentTitleLiteralKey(), langCode)}" />
+<c:set var="title"
+	value="${ LocalizationManager.getLiteral(bar.getTitleLiteralKey(), langCode)}" />
+<c:set var="barSegmentTitle"
+	value="${ LocalizationManager.getLiteral(bar.getBarSegmentTitleLiteralKey(), langCode)}" />
 
 <%@ attribute name="dir" required="false" type="java.lang.String"%>
 <%@ attribute name="width" required="false" type="java.lang.String"%>
@@ -19,7 +23,8 @@
 <c:set var="actualHeigh" value="${heigh != null ? heigh : '400px'}" />
 
 <h4>${title}</h4>
-<div id="${idKey}" style="min-width: ${actualWidth}; height: ${actualHeigh }; margin: 0 auto"></div>
+<div id="${idKey}"
+	style="min-width: ${actualWidth}; height: ${actualHeigh }; margin: 0 auto"></div>
 
 
 <script src="js/charts/highcharts.js"></script>

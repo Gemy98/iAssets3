@@ -1,12 +1,16 @@
-<%@ tag body-content="empty" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ tag body-content="empty" pageEncoding="UTF-8"
+	trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ attribute name="idKey" required="true" type="java.lang.String"%>
-<%@ attribute name="pieChart" required="true" type="com.iassets.common.bo.charts.PieChart"%>
+<%@ attribute name="pieChart" required="true"
+	type="com.iassets.common.bo.charts.PieChart"%>
 <%@ attribute name="langCode" required="true" type="java.lang.String"%>
 
-<c:set var="title" value="${ LocalizationManager.getLiteral(pieChart.getTitleLiteralKey(), langCode)}" />
-<c:set var="seriesText" value="${ LocalizationManager.getLiteral(pieChart.getSeriesLiteralKey(), langCode)}" />
+<c:set var="title"
+	value="${ LocalizationManager.getLiteral(pieChart.getTitleLiteralKey(), langCode)}" />
+<c:set var="seriesText"
+	value="${ LocalizationManager.getLiteral(pieChart.getSeriesLiteralKey(), langCode)}" />
 
 <%@ attribute name="dir" required="false" type="java.lang.String"%>
 <%@ attribute name="width" required="false" type="java.lang.String"%>
@@ -17,7 +21,8 @@
 <c:set var="actualWidth" value="${width != null ? width : '310px'}" />
 <c:set var="actualHeigh" value="${heigh != null ? heigh : '400px'}" />
 
-<div id="${idKey}" style="min-width: ${actualWidth}; height: ${actualHeigh }; margin: 0 auto"></div>
+<div id="${idKey}"
+	style="min-width: ${actualWidth}; height: ${actualHeigh }; margin: 0 auto"></div>
 
 
 <script src="js/charts/highcharts.js"></script>
