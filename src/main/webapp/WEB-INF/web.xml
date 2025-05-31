@@ -88,6 +88,10 @@
     <servlet-name>GenBasicServlet</servlet-name>
     <servlet-class>com.iassets.general.servlet.GenBasicServlet</servlet-class>
   </servlet>
+  <servlet-mapping>
+    <servlet-name>GenBasicServlet</servlet-name>
+    <url-pattern>/gen/*</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>PdfServlet</servlet-name>
     <servlet-class>com.iassets.common.servlet.PdfServlet</servlet-class>
@@ -240,7 +244,7 @@
       <url-pattern>/bio/ViewPPMNotHappenedVisits</url-pattern>
     </web-resource-collection>
     <auth-constraint>
-      <role-name>bioRegionDirector</role-name>
+      <role-name>genRegionDirector</role-name>
     </auth-constraint>
   </security-constraint>
   <security-constraint>
